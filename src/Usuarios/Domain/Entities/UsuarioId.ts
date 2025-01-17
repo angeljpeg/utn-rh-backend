@@ -1,7 +1,12 @@
 export class UsuarioId {
-    value: string
+  value: string;
 
-    constructor(value:string) {
-        this.value = value
-    }
+  constructor(value: string) {
+    this.ensureIsValid(value);
+    this.value = value;
+  }
+
+  private ensureIsValid(value: string) {
+    if (!value) throw new Error("El ID es necesario");
+  }
 }

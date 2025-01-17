@@ -1,7 +1,11 @@
 export class UsuarioPassword {
-    value: string
+  value: string;
 
-    constructor(value: string) {
-        this.value = value
-    }
+  constructor(value: string) {
+    this.value = value;
+  }
+
+  private ensureIsValid(value: string) {
+    if (!value) throw new Error("El password es necesario");
+  }
 }
