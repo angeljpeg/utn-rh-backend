@@ -15,7 +15,7 @@ export class ExpressUsuarioController {
   async getAll(req: Request, res: Response, next: NextFunction) {
     try {
       const usuarios = await ServiceContainer.getAll.run();
-      res.status(201).json(usuarios);
+      res.status(200).json(usuarios);
     } catch (error) {
       next(error);
     }

@@ -9,6 +9,7 @@ export class InMemoryRepository implements UsuarioRepository {
     }
 
     async getAll(): Promise<Usuario[]> {
+        console.log(this.usuarios)
         return this.usuarios
     }
 }
