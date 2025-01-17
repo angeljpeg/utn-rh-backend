@@ -5,9 +5,18 @@ export class ExpressUsuarioController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const body = req.body;
-      ServiceContainer.create.run(body);
+      await ServiceContainer.create.run(body);
 
       res.status(201);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getAll(req: Request, res: Response, next: NextFunction) {
+    try {
+      const usuarios = await ServiceContainer.getAll.run();
+      res.status(201).json(usuarios);
     } catch (error) {
       next(error);
     }
