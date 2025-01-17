@@ -27,7 +27,7 @@ git  clone  https://github.com/angeljpeg/utn-rh-backend.git
 
 ```bash
 
-cd  ./utn-rh
+cd  ./utn-rh-backend
 
 ```
 
