@@ -6,8 +6,7 @@ export class ExpressUsuarioController {
     try {
       const body = req.body;
       await ServiceContainer.create.run(body);
-
-      res.status(201);
+      res.status(201).send();
     } catch (error) {
       next(error);
     }
