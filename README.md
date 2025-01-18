@@ -1,19 +1,16 @@
-#  UTN - RECURSOS HUMANOS
+# UTN - RECURSOS HUMANOS
 
-##  🎖️ - Objetivo
+## 🎖️ - Objetivo
 
-##  🛠️ - Herramientas necesarias
+## 🛠️ - Herramientas necesarias
 
 Es recomendable instalar los siguientes CLI para que se pueda trabajar.
 
 ```bash
-
-npm  -g  pnpm
-
-npm  -g  @nestjs/cli
-
+npm i -g  pnpm
 ```
-##  🧩 - Instalar Repositorio
+
+## 🧩 - Instalar Repositorio
 
 1. Clonar Repositorio.
 
@@ -35,7 +32,7 @@ cd  ./utn-rh-backend
 
 ```bash
 
-pnpm  install
+pnpm install
 
 ```
 
@@ -120,14 +117,9 @@ Una buena estrategia para gestionar las ramas en Git es clave para mantener un f
 
 Siguiendo esta estrategia, tu equipo podrá gestionar de manera eficiente las ramas en Git, minimizando los conflictos y asegurando un flujo de trabajo claro y organizado.
 
-
-##  🚧 - Como hacer un commit
-
-  
+## 🚧 - Como hacer un commit
 
 Estas son las reglas para subir un commit, asegurense de seguirlas correctamente para asegurarnos de que el proyecto no se rompa en ningun momento.
-
-  
 
 ```
 
@@ -136,44 +128,49 @@ Estas reglas es tan basadas en Conventional Commits
 ```
 
 1. **Crear tu rama**
-Antes de subir un commit asegurate de estar en tu propia rama. Antes de esta seccion hay otra que explica como crear las ramas
+   Antes de subir un commit asegurate de estar en tu propia rama. Antes de esta seccion hay otra que explica como crear las ramas
 2. **Estructura del Mensaje del Commit**
-- El mensaje debe seguir esta estructura básica:
-	```
-	<tipo>(<alcance>): descripcion
-	```
-	Donde:
 
--   **tipo**: Describe la naturaleza del cambio (ejemplo: `feat`, `fix`, `chore`).
--   **alcance** (opcional): Especifica la parte del proyecto que se ve afectada (ejemplo: `ui`, `api`).
--   **descripción**: Explica brevemente el cambio realizado.
+- El mensaje debe seguir esta estructura básica:
+
+  ```
+  <tipo>(<alcance>): descripcion
+  ```
+
+  Donde:
+
+- **tipo**: Describe la naturaleza del cambio (ejemplo: `feat`, `fix`, `chore`).
+- **alcance** (opcional): Especifica la parte del proyecto que se ve afectada (ejemplo: `ui`, `api`).
+- **descripción**: Explica brevemente el cambio realizado.
+
 3. **Tipos Comunes de Commits**
 
--   `feat`: Se utiliza cuando agregas una nueva característica.
--   `fix`: Para solucionar un bug o error.
--   `docs`: Cambios en la documentación.
--   `style`: Cambios en el estilo (formato, espacio, etc.) que no afectan el comportamiento.
--   `refactor`: Refactorización del código sin cambiar su comportamiento.
--   `test`: Añadir o modificar pruebas.
--   `chore`: Cambios en tareas de mantenimiento como configuración, actualizaciones, etc.
+- `feat`: Se utiliza cuando agregas una nueva característica.
+- `fix`: Para solucionar un bug o error.
+- `docs`: Cambios en la documentación.
+- `style`: Cambios en el estilo (formato, espacio, etc.) que no afectan el comportamiento.
+- `refactor`: Refactorización del código sin cambiar su comportamiento.
+- `test`: Añadir o modificar pruebas.
+- `chore`: Cambios en tareas de mantenimiento como configuración, actualizaciones, etc.
+
 4. **Mensajes Claros y Descriptivos**
 
--   Asegúrate de que el mensaje del commit sea fácil de entender, sin ser demasiado largo ni vago.
+- Asegúrate de que el mensaje del commit sea fácil de entender, sin ser demasiado largo ni vago.
 
 **Ejemplos de commit:**
 
--   `feat(ui): agregar barra de navegación`
--   `fix(api): corregir error en la autenticación`
--   `chore(config): actualizar dependencias`
+- `feat(ui): agregar barra de navegación`
+- `fix(api): corregir error en la autenticación`
+- `chore(config): actualizar dependencias`
 
 Recuerda seguir estas reglas para mantener un historial de commits claro y coherente.
 
-##  🤓💻 - Colaboradores
+## 🤓💻 - Colaboradores
 
--  [Angel Gonzalez](https://github.com/angeljpeg)
+- [Angel Gonzalez](https://github.com/angeljpeg)
 
--  [Garib Flores](https://github.com/garibcatastrofe)
+- [Garib Flores](https://github.com/garibcatastrofe)
 
--  [Ivan Lopez](https://github.com/IvancitoLH)
+- [Ivan Lopez](https://github.com/IvancitoLH)
 
--  [Josue Vega](https://github.com/JosueVega409)
+- [Josue Vega](https://github.com/JosueVega409)
