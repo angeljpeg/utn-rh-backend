@@ -2,6 +2,9 @@
 
 ## 🎖️ - Objetivo
 
+- Desarrollar un sistema de gestion de prestaciones de empleados
+- Desarrollar una API para consumir el sistema de gestion de prestaciones escalable
+
 ## 🛠️ - Herramientas necesarias
 
 Es recomendable instalar los siguientes CLI para que se pueda trabajar.
