@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ServiceContainer } from "./ServiceContainer";
 import { InvalidDataException } from "../Domain/Exceptions/InvalidDataException";
+import { NotFoundException } from "../Domain/Exceptions/NotFoundException";
 
 export class ExpressUsuarioController {
   async create(req: Request, res: Response, next: NextFunction) {
@@ -21,6 +22,22 @@ export class ExpressUsuarioController {
       const usuarios = await ServiceContainer.getAll.run();
       res.status(200).json(usuarios);
     } catch (error) {
+      next(error);
+    }
+  }
+
+  async getById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = req.params.id;
+      const usuario = await ServiceContainer.getById.run(id);
+      res.status(200).json(usuario);
+    } catch (error) {
+      if (error instanceof InvalidDataException) {
+        res.status(400).json({ message: error.message });
+      }
+      if (error instanceof NotFoundException) {
+        res.status(404).json({ message: error.message });
+      }
       next(error);
     }
   }

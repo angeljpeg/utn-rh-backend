@@ -1,10 +1,11 @@
-import { Usuario } from "../../Domain/Entities/Usuario";
+import { UsuarioPrimitive } from "../../Domain/Entities/Usuario";
 import { UsuarioRepository } from "../../Domain/Entities/UsuarioRepository";
 
 export class GetAllUsuarios {
-    constructor(private readonly usuarioRepository: UsuarioRepository){}
+  constructor(private readonly usuarioRepository: UsuarioRepository) {}
 
-    async run(): Promise<Usuario[]> {
-        return this.usuarioRepository.getAll()
-    }
+  async run(): Promise<UsuarioPrimitive[]> {
+    const usuarios = await this.usuarioRepository.getAll();
+    return usuarios.map((usuario) => usuario.toPrimitive());
+  }
 }
