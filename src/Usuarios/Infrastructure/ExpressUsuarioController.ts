@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ServiceContainer } from "./ServiceContainer";
+import { InvalidDataException } from "../Domain/Exceptions/InvalidDataException";
 
 export class ExpressUsuarioController {
   async create(req: Request, res: Response, next: NextFunction) {
@@ -8,6 +9,9 @@ export class ExpressUsuarioController {
       await ServiceContainer.create.run(body);
       res.status(201).send();
     } catch (error) {
+      if (error instanceof InvalidDataException) {
+        res.status(400).json({ message: error.message });
+      }
       next(error);
     }
   }
