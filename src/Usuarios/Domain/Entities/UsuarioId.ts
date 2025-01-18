@@ -1,4 +1,4 @@
-import { InvalidDataException } from "../Exceptions/InvalidDataException";
+import { InvalidDataException } from "@/src/Shared/Domain/Exceptions/InvalidDataException";
 
 export class UsuarioId {
   value: string;
@@ -9,8 +9,18 @@ export class UsuarioId {
   }
 
   private ensureIsValid(value: string) {
-    const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
-    if (!value) throw new InvalidDataException("El ID es necesario");
-    if (!uuidRegex.test(value)) throw new InvalidDataException("El ID debe ser un UUID");
+    const uuidRegex =
+      /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+    if (!value)
+      throw new InvalidDataException({
+        message: "El ID es necesario",
+        campo: "usuarioId",
+      });
+    if (!uuidRegex.test(value))
+      throw new InvalidDataException({
+        message: "El ID debe ser un UUID",
+        campo: "usuarioId",
+        data: value,
+      });
   }
 }

@@ -3,7 +3,7 @@ import { UsuarioId } from "../../Domain/Entities/UsuarioId";
 import { UsuarioMatricula } from "../../Domain/Entities/UsuarioMatricula";
 import { UsuarioPassword } from "../../Domain/Entities/UsuarioPassword";
 import { UsuarioRepository } from "../../Domain/Entities/UsuarioRepository";
-import { CreateUsuarioDto } from "./CreateUsuario.dto";
+import { CreateUsuarioDto } from "./CreateUsuarioDto";
 
 export class CreateUsuario {
     constructor(private readonly usuarioRepository: UsuarioRepository) { }

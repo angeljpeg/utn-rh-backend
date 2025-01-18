@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ServiceContainer } from "./ServiceContainer";
-import { InvalidDataException } from "../Domain/Exceptions/InvalidDataException";
-import { NotFoundException } from "../Domain/Exceptions/NotFoundException";
+import { InvalidDataException } from "@/src/Shared/Domain/Exceptions/InvalidDataException";
+import { NotFoundException } from "@/src/Shared/Domain/Exceptions/NotFoundException";
 
 export class ExpressUsuarioController {
   async create(req: Request, res: Response, next: NextFunction) {
@@ -11,7 +11,7 @@ export class ExpressUsuarioController {
       res.status(201).send();
     } catch (error) {
       if (error instanceof InvalidDataException) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json(error);
       }
       next(error);
     }
@@ -33,10 +33,10 @@ export class ExpressUsuarioController {
       res.status(200).json(usuario);
     } catch (error) {
       if (error instanceof InvalidDataException) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json(error);
       }
       if (error instanceof NotFoundException) {
-        res.status(404).json({ message: error.message });
+        res.status(404).json(error);
       }
       next(error);
     }

@@ -1,4 +1,4 @@
-import { InvalidDataException } from "../Exceptions/InvalidDataException";
+import { InvalidDataException } from "@/src/Shared/Domain/Exceptions/InvalidDataException";
 
 export class UsuarioPassword {
   value: string;
@@ -9,6 +9,10 @@ export class UsuarioPassword {
   }
 
   private ensureIsValid(value: string) {
-    if (!value) throw new InvalidDataException("El password es necesario");
+    if (!value)
+      throw new InvalidDataException({
+        message: "El password es necesario",
+        campo: "password",
+      });
   }
 }
