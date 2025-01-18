@@ -12,12 +12,12 @@ app.use(UsuarioRouter);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: unknown, _req: Request, res: Response, next: NextFunction) => {
   if (err instanceof Error) {
-    console.log("Error:", err.message);
-    console.log("Info Error", err.stack);
+    console.error("Error:", err.message);
+    console.error("Info Error", err.stack);
     res.status(500).json({ message: err.message });
   }
 
-  console.log("Error:", err);
+  console.error("Error:", err);
   res.status(500).json({ message: "Something went wrong :/" });
 });
 

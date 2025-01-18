@@ -1,14 +1,14 @@
 import { InvalidDataException } from "@/src/Shared/Domain/Exceptions/InvalidDataException";
 
 export class UsuarioId {
-  value: string;
+  public value: string;
 
-  constructor(value: string) {
+  public constructor(value: string) {
     this.ensureIsValid(value);
     this.value = value;
   }
 
-  private ensureIsValid(value: string) {
+  private ensureIsValid(value: string): void {
     const uuidRegex =
       /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
     if (!value)

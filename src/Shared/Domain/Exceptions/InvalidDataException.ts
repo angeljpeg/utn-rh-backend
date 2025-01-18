@@ -1,8 +1,10 @@
 export class InvalidDataException extends Error {
-  campo?: string;
-  data?: unknown;
+  private campo?: string;
+  private data?: unknown;
 
-  constructor(messageOrObject: string | { message: string; campo?: string; data?: unknown }) {
+  public constructor(
+    messageOrObject: string | { message: string; campo?: string; data?: unknown },
+  ) {
     if (typeof messageOrObject === 'string') {
       super(messageOrObject);
     } else {

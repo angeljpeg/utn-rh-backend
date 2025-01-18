@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from "express";
-import { ServiceContainer } from "./ServiceContainer";
-import { InvalidDataException } from "@/src/Shared/Domain/Exceptions/InvalidDataException";
-import { NotFoundException } from "@/src/Shared/Domain/Exceptions/NotFoundException";
+import { NextFunction, Request, Response } from 'express';
+import { ServiceContainer } from './ServiceContainer';
+import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { NotFoundException } from '@/src/Shared/Domain/Exceptions/NotFoundException';
 
 export class ExpressUsuarioController {
-  async create(req: Request, res: Response, next: NextFunction) {
+  public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const body = req.body;
       await ServiceContainer.create.run(body);
@@ -17,7 +17,7 @@ export class ExpressUsuarioController {
     }
   }
 
-  async getAll(req: Request, res: Response, next: NextFunction) {
+  public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const usuarios = await ServiceContainer.getAll.run();
       res.status(200).json(usuarios);
@@ -26,7 +26,7 @@ export class ExpressUsuarioController {
     }
   }
 
-  async getById(req: Request, res: Response, next: NextFunction) {
+  public async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const id = req.params.id;
       const usuario = await ServiceContainer.getById.run(id);

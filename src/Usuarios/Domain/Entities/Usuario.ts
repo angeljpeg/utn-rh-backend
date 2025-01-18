@@ -1,23 +1,19 @@
-import { UsuarioId } from "./UsuarioId";
-import { UsuarioMatricula } from "./UsuarioMatricula";
-import { UsuarioPassword } from "./UsuarioPassword";
+import { UsuarioId } from './UsuarioId';
+import { UsuarioMatricula } from './UsuarioMatricula';
+import { UsuarioPassword } from './UsuarioPassword';
 
 export class Usuario {
-  usuarioId: UsuarioId;
-  matricula: UsuarioMatricula;
-  password: UsuarioPassword;
+  public usuarioId: UsuarioId;
+  public matricula: UsuarioMatricula;
+  public password: UsuarioPassword;
 
-  constructor(
-    id: UsuarioId,
-    matricula: UsuarioMatricula,
-    password: UsuarioPassword
-  ) {
+  public constructor(id: UsuarioId, matricula: UsuarioMatricula, password: UsuarioPassword) {
     this.usuarioId = id;
     this.matricula = matricula;
     this.password = password;
   }
 
-  toPrimitive() {
+  public toPrimitive(): UsuarioPrimitive {
     return {
       usuarioId: this.usuarioId.value,
       matricula: this.matricula.value,

@@ -6,9 +6,9 @@ import { UsuarioRepository } from "../../Domain/Entities/UsuarioRepository";
 import { CreateUsuarioDto } from "./CreateUsuarioDto";
 
 export class CreateUsuario {
-    constructor(private readonly usuarioRepository: UsuarioRepository) { }
+    public constructor(private readonly usuarioRepository: UsuarioRepository) { }
 
-    async run(usuario: CreateUsuarioDto): Promise<void> {
+    public async run(usuario: CreateUsuarioDto): Promise<void> {
         const newUsuario = new Usuario(
             new UsuarioId(usuario.usuarioId),
             new UsuarioMatricula(usuario.matricula),
