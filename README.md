@@ -10,7 +10,9 @@
 Es recomendable instalar los siguientes CLI para que se pueda trabajar.
 
 ```bash
-npm i -g  pnpm
+
+npm i -g pnpm
+
 ```
 
 ## 🧩 - Instalar Repositorio
@@ -43,7 +45,7 @@ pnpm install
 
 Una buena estrategia para gestionar las ramas en Git es clave para mantener un flujo de trabajo ordenado y facilitar la colaboración en equipos de desarrollo. Aquí te explicamos una estrategia recomendada que sigue las mejores prácticas.
 
-## 1. Rama Principal (`main` o `master`)
+## 1. Rama Principal (`main`)
 
 - **Propósito**: Esta es la rama estable que siempre debe tener código que funcione correctamente en producción.
 - **Reglas**:

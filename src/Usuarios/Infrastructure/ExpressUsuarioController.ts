@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ServiceContainer } from './ServiceContainer';
+import { ServiceContainer } from '@/src/Shared/Infrastructure/ServiceContainer';
 import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
 import { NotFoundException } from '@/src/Shared/Domain/Exceptions/NotFoundException';
 
@@ -7,7 +7,7 @@ export class ExpressUsuarioController {
   public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const body = req.body;
-      await ServiceContainer.create.run(body);
+      await ServiceContainer.usuario.create.run(body);
       res.status(201).send();
     } catch (error) {
       if (error instanceof InvalidDataException) {
@@ -19,7 +19,7 @@ export class ExpressUsuarioController {
 
   public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const usuarios = await ServiceContainer.getAll.run();
+      const usuarios = await ServiceContainer.usuario.getAll.run();
       res.status(200).json(usuarios);
     } catch (error) {
       next(error);
@@ -29,7 +29,7 @@ export class ExpressUsuarioController {
   public async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const id = req.params.id;
-      const usuario = await ServiceContainer.getById.run(id);
+      const usuario = await ServiceContainer.usuario.getOneById.run(id);
       res.status(200).json(usuario);
     } catch (error) {
       if (error instanceof InvalidDataException) {
