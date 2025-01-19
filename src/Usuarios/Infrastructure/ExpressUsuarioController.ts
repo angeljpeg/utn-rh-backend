@@ -41,4 +41,30 @@ export class ExpressUsuarioController {
       next(error);
     }
   }
+
+  public async getOneBy(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { campo, value } = req.params;
+      const usuario = await ServiceContainer.usuario.getOneBy.run(campo, value);
+      res.status(200).json(usuario);
+    } catch (error) {
+      if (error instanceof InvalidDataException) {
+        res.status(400).json(error);
+      }
+      next(error);
+    }
+  }
+
+  public async login(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { matricula, password } = req.body;
+      const usuario = await ServiceContainer.usuario.login.run(matricula, password);
+      res.status(200).json({ token: 'token', usuario });
+    } catch (error) {
+      if (error instanceof InvalidDataException) {
+        res.status(400).json(error);
+      }
+      next(error);
+    }
+  }
 }

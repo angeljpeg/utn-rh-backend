@@ -1,8 +1,10 @@
-import { Usuario } from "./Usuario";
-import { UsuarioId } from "./UsuarioId";
+import { Usuario } from './Usuario';
+import { UsuarioId } from './UsuarioId';
 
 export interface UsuarioRepository {
-    create(usuario: Usuario): Promise<void>
-    getAll(): Promise<Usuario[]>
-    getById(id: UsuarioId): Promise<Usuario | null>
+  create(usuario: Usuario): Promise<void>;
+  getAll(): Promise<Usuario[]>;
+  getById(id: UsuarioId): Promise<Usuario | null>;
+  getOneBy(campo: string, value: string): Promise<Usuario | null>;
+  login(matricula: string, password: string): Promise<Usuario | null>;
 }

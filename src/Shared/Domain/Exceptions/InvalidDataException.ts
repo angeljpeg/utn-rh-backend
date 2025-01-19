@@ -11,6 +11,7 @@ export class InvalidDataException extends Error {
       super(messageOrObject.message);
       this.campo = messageOrObject.campo;
       this.data = messageOrObject.data;
+      this.message = messageOrObject.message;
     }
     this.name = 'InvalidDataException';
   }
