@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
 import { Environment, environmentSchema } from '../Domain/Entities/Environment';
-
-dotenv.config();
+process.loadEnvFile()
 
 const parseEnv = (): Environment => {
   const envValues = {
