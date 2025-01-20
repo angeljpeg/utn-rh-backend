@@ -1,9 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
+import cors from 'cors'
 import { UsuarioRouter } from "./Usuarios/Infrastructure/ExpressUsuarioRouter";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
 app.use(UsuarioRouter);
 
