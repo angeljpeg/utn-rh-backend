@@ -9,5 +9,6 @@ UsuarioRouter.get('/usuarios', controller.getAll);
 UsuarioRouter.get('/usuario/:id', controller.getById);
 UsuarioRouter.get('/usuario/:campo/:value', controller.getOneBy);
 UsuarioRouter.post('/usuario/login', controller.login);
+UsuarioRouter.put('/usuario/:id', controller.update);
 
 export { UsuarioRouter };

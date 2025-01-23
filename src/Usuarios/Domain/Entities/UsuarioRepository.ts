@@ -6,5 +6,6 @@ export interface UsuarioRepository {
   getAll(): Promise<Usuario[]>;
   getById(id: UsuarioId): Promise<Usuario | null>;
   getOneBy(campo: string, value: string): Promise<Usuario | null>;
+  update(usuario: Usuario): Promise<void>;
   login(matricula: string, password: string): Promise<Usuario | null>;
 }

@@ -55,6 +55,25 @@ export class ExpressUsuarioController {
     }
   }
 
+  public async update(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const id = req.params.id;
+      const usuario = await ServiceContainer.usuario.getOneById.run(id);
+      const body = req.body;
+
+      await ServiceContainer.usuario.update.run(body, id);
+      res.status(200).json(usuario);
+    } catch (error) {
+      if (error instanceof InvalidDataException) {
+        res.status(400).json(error);
+      }
+      if (error instanceof NotFoundException) {
+        res.status(404).json(error);
+      }
+      next(error);
+    }
+  }
+
   public async login(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { matricula, password } = req.body;
