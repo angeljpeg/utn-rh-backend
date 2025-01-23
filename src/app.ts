@@ -11,7 +11,6 @@ app.use(cors());
 app.use(UsuarioRouter);
 
 // Middlewares
-// Cacheo de errores
 app.use(catchErrorsMiddleware);
 
 export { app };
