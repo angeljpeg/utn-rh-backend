@@ -1,6 +1,5 @@
 import { Environment, environmentSchema } from '../Domain/Entities/Environment';
-
-process.loadEnvFile();
+process.loadEnvFile()
 
 const parseEnv = (): Environment => {
   const envValues = {
