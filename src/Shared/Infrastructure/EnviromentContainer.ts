@@ -1,20 +1,26 @@
-import { Environment, environmentSchema } from '../Domain/Entities/Environment';
-process.loadEnvFile()
+import { Environment } from '../Domain/Entities/Environment';
+import { validateEnvironment } from './EnvironmentValidator';
 
-const parseEnv = (): Environment => {
-  const envValues = {
-    NODE_ENV: process.env.NODE_ENV || 'development',
-    PORT: process.env.PORT ? parseInt(process.env.PORT, 10) : 4000,
-  };
+process.loadEnvFile();
 
-  const result = environmentSchema.safeParse(envValues);
+export class EnvironmentContainer {
+  private static instance: Environment;
 
-  if (!result.success) {
-    console.error('❌ Invalid environment variables:', result.error.format());
-    throw new Error('Invalid environment variables');
+  public static getInstance(): Environment {
+    if (!this.instance) {
+      const envValues = {
+        NODE_ENV: process.env.NODE_ENV,
+        PORT: Number(process.env.PORT),
+      };
+
+      try {
+        this.instance = validateEnvironment(envValues);
+      } catch (error) {
+        console.error('Error validating environment variables:', error);
+        process.exit(1);
+      }
+    }
+
+    return this.instance;
   }
-
-  return result.data;
-};
-
-export const env: Environment = parseEnv();
+}
