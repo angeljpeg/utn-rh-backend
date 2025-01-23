@@ -1,5 +1,6 @@
 // Usuarios Use Cases
 import { CreateUsuario } from '@/src/Usuarios/Application/CreateUsuario/CreateUsuario';
+import { DeleteUsuario } from '@/src/Usuarios/Application/DeleteUsuario/DeleteUsuario';
 import { GetAllUsuarios } from '@/src/Usuarios/Application/GetAllUsuarios/GetAllUsuarios';
 import { GetUsuarioBy } from '@/src/Usuarios/Application/GetUsuarioBy/GetUsuarioBy';
 import { GetUsuarioById } from '@/src/Usuarios/Application/GetUsuarioByID/GetUsuarioById';
@@ -17,5 +18,6 @@ export const ServiceContainer = {
     getOneBy: new GetUsuarioBy(UsuarioRepository),
     login: new LoginUsuario(UsuarioRepository),
     update: new UpdateUsuario(UsuarioRepository),
+    delete: new DeleteUsuario(UsuarioRepository),
   },
 };

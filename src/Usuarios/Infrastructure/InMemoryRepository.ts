@@ -37,6 +37,15 @@ export class InMemoryRepository implements UsuarioRepository {
     this.usuarios[index] = usuario;
   }
 
+  public async delete(id: UsuarioId): Promise<void> {
+    const index = this.usuarios.findIndex(u => u.usuarioId.value === id.value);
+    if (index === -1) {
+      throw new Error('Usuario no encontrado.');
+    }
+
+    this.usuarios.splice(index, 1);
+  }
+
   public async login(matricula: string, password: string): Promise<Usuario | null> {
     const usuario = this.usuarios.find(
       u => u.matricula.value === matricula && u.password.value === password,
