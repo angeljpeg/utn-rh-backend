@@ -25,3 +25,5 @@ export class EnvironmentContainer {
     return this.instance;
   }
 }
+
+export const env = EnvironmentContainer.getInstance();
