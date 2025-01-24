@@ -1,5 +1,5 @@
 import { app } from './app';
-import { EnvironmentContainer } from './Shared/Infrastructure/EnviromentContainer';
+import { EnvironmentContainer } from './Shared/Infrastructure/EnvironmentContainer';
 
 const env = EnvironmentContainer.getInstance();
 app.listen(env.PORT, () => {

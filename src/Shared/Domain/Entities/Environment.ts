@@ -9,4 +9,9 @@ export interface Environment {
   NODE_ENV: NodeEnv;
   PORT: number;
   DATABASE_URL: string;
+  DATABASE_NAME: string;
+  DATABASE_USER: string;
+  DATABASE_PASSWORD: string;
+  DATABASE_HOST: string;
+  DATABASE_PORT: number;
 }

@@ -1,6 +1,6 @@
-import { mysqlTable, int, varchar } from 'drizzle-orm/mysql-core';
-export const Usuarios = mysqlTable('users', {
-  usuarioId: int(),
-  matricula: varchar({ length: 8 }),
-  password: varchar({ length: 8 }),
+import { mysqlTable, varchar } from 'drizzle-orm/mysql-core';
+export const UsuariosSchema = mysqlTable('usuarios', {
+  usuarioId: varchar({ length: 36 }).primaryKey(),
+  matricula: varchar({ length: 8 }).notNull(),
+  password: varchar({ length: 8 }).notNull(),
 });

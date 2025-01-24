@@ -14,7 +14,9 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js}\"",
-    "lint-format": "pnpm run lint && pnpm run format"
+    "lint-format": "pnpm run lint && pnpm run format",
+    "db:generate": "drizzle-kit generate --config=./src/Database/Infrastructure/Drizzle/config.ts",
+    "db:push": "drizzle-kit push --config=./src/Database/Infrastructure/Drizzle/config.ts"
   },
   "keywords": [],
   "author": "",

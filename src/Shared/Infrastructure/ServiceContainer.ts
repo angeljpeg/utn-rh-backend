@@ -7,8 +7,9 @@ import { GetUsuarioById } from '@/src/Usuarios/Application/GetUsuarioByID/GetUsu
 import { LoginUsuario } from '@/src/Usuarios/Application/LoginUsuario/LoginUsuario';
 import { UpdateUsuario } from '@/src/Usuarios/Application/UpdateUsuario.ts/UpdateUsuario';
 // Usuarios Repositories
-import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
-const UsuarioRepository = new InMemoryRepository();
+import { DrizzleMySQLRepository } from '@/src/Usuarios/Infrastructure/DrizzleMySQLRepository';
+//import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
+const UsuarioRepository = new DrizzleMySQLRepository();
 
 export const ServiceContainer = {
   usuario: {
