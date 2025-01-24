@@ -42,7 +42,19 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
   }
 
   public async getOneBy(campo: string, value: string): Promise<Usuario | null> {
-    const usuario = await db.select().from(usuarios).where(eq(usuarios.campo, value));
+    let usuario;
+    
+    switch (campo) {
+      case 'usuarioId':
+        usuario = await db.select().from(usuarios).where(eq(usuarios.usuarioId, value));
+        break;
+      case 'matricula':
+        usuario = await db.select().from(usuarios).where(eq(usuarios.matricula, value));
+        break;
+      default:
+        throw new Error(`Campo '${campo}' no válido`);
+    }
+
     return usuario.length > 0
       ? new Usuario(
           new UsuarioId(usuario[0].usuarioId),
