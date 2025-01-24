@@ -11,6 +11,7 @@ export class EnvironmentContainer {
       const envValues = {
         NODE_ENV: process.env.NODE_ENV,
         PORT: Number(process.env.PORT),
+        DATABASE_URL: process.env.DATABASE_URL,
       };
 
       try {
