@@ -9,6 +9,7 @@ import { UsuarioRepository } from '../Domain/Entities/UsuarioRepository';
 import { db } from '@/src/Database/Infrastructure/Drizzle/DrizzleMySQLService';
 import { eq } from 'drizzle-orm';
 import { UsuariosSchema as usuarios } from '@/src/Database/Infrastructure/Drizzle/schemas/UsuarioSchema';
+import { UsuarioNombre } from '../Domain/Entities/UsuarioNombre';
 
 export class DrizzleMySQLRepository implements UsuarioRepository {
   public async create(usuario: Usuario): Promise<void> {
@@ -16,6 +17,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
       usuarioId: usuario.usuarioId.value,
       matricula: usuario.matricula.value,
       password: usuario.password.value,
+      nombre: usuario.nombre.value,
     });
   }
 
@@ -26,6 +28,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
         new UsuarioId(u.usuarioId),
         new UsuarioMatricula(u.matricula),
         new UsuarioPassword(u.password),
+        new UsuarioNombre(u.nombre),
       );
     });
   }
@@ -37,13 +40,14 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioId(usuario[0].usuarioId),
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
+          new UsuarioNombre(usuario[0].nombre),
         )
       : null;
   }
 
   public async getOneBy(campo: string, value: string): Promise<Usuario | null> {
     let usuario;
-    
+
     switch (campo) {
       case 'usuarioId':
         usuario = await db.select().from(usuarios).where(eq(usuarios.usuarioId, value));
@@ -60,6 +64,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioId(usuario[0].usuarioId),
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
+          new UsuarioNombre(usuario[0].nombre),
         )
       : null;
   }
@@ -88,6 +93,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioId(usuario[0].usuarioId),
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
+          new UsuarioNombre(usuario[0].nombre),
         )
       : null;
   }

@@ -1,6 +1,7 @@
 import { Usuario } from '../../Domain/Entities/Usuario';
 import { UsuarioId } from '../../Domain/Entities/UsuarioId';
 import { UsuarioMatricula } from '../../Domain/Entities/UsuarioMatricula';
+import { UsuarioNombre } from '../../Domain/Entities/UsuarioNombre';
 import { UsuarioPassword } from '../../Domain/Entities/UsuarioPassword';
 import { UsuarioRepository } from '../../Domain/Entities/UsuarioRepository';
 import { UpdateUsuarioDto } from './UpdateUsuarioDto';
@@ -16,6 +17,7 @@ export class UpdateUsuario {
       usuarioId,
       new UsuarioMatricula(usuario.matricula),
       new UsuarioPassword(usuario.password),
+      new UsuarioNombre(usuario.nombre),
     );
 
     return this.usuarioRepository.update(updatedUsuario);

@@ -11,8 +11,8 @@ export class LoginUsuario {
     if (!usuario) {
       throw new InvalidDataException({
         message: 'Credenciales inválidas',
-        campo: 'auth',
-        data: 'Usuario o contraseña incorrectos',
+        campo: 'matricula',
+        data: 'matricula no existente',
       });
     }
 
@@ -21,8 +21,8 @@ export class LoginUsuario {
     if (!isPasswordValid) {
       throw new InvalidDataException({
         message: 'Credenciales inválidas',
-        campo: 'auth',
-        data: 'Usuario o contraseña incorrectos',
+        campo: 'password',
+        data: 'contraseña incorrectos',
       });
     }
 
