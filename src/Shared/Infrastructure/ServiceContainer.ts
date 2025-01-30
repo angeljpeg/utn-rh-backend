@@ -8,8 +8,11 @@ import { LoginUsuario } from '@/src/Usuarios/Application/LoginUsuario/LoginUsuar
 import { UpdateUsuario } from '@/src/Usuarios/Application/UpdateUsuario.ts/UpdateUsuario';
 // Usuarios Repositories
 import { DrizzleMySQLRepository } from '@/src/Usuarios/Infrastructure/DrizzleMySQLRepository';
+import { CreateEmpleado } from '@/src/Empleados/Application/CreateEmpleado/CreateEmpleado';
+import { DrizzleMySQLEmpleadoRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLEmpleadoRepository';
 //import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
 const UsuarioRepository = new DrizzleMySQLRepository();
+const EmpleadoRepository = new DrizzleMySQLEmpleadoRepository();
 
 export const ServiceContainer = {
   usuario: {
@@ -20,5 +23,8 @@ export const ServiceContainer = {
     login: new LoginUsuario(UsuarioRepository),
     update: new UpdateUsuario(UsuarioRepository),
     delete: new DeleteUsuario(UsuarioRepository),
+  },
+  empleado: {
+    create: new CreateEmpleado(EmpleadoRepository),
   },
 };
