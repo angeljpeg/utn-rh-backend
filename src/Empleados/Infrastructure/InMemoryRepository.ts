@@ -1,9 +1,16 @@
+import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
 import { Empleado } from '../Domain/Empleado';
 import { EmpleadoID } from '../Domain/EmpleadoId';
 import { EmpleadoRepository } from '../Domain/EmpleadoRepository';
 
 export class InMemoryEmpleadosRepository implements EmpleadoRepository {
   public empleados: Empleado[] = [];
+  private readonly validFields = [
+    'noEmpleado',
+    'nombreEmpleado',
+    'fechaIngreso',
+    'diasVacaciones',
+  ] as const;
 
   public async create(empleado: Empleado): Promise<void> {
     this.empleados.push(empleado);
@@ -13,6 +20,30 @@ export class InMemoryEmpleadosRepository implements EmpleadoRepository {
     return this.empleados;
   }
 
+  public async getBy(campo: string, value: string): Promise<Empleado[]> {
+    if (!this.validFields.includes(campo as (typeof this.validFields)[number])) {
+      throw new InvalidDataException({
+        message: 'Campo Invalido',
+        campo: campo,
+        data: value,
+      });
+    }
+    return this.empleados.filter(e => {
+      switch (campo) {
+        case 'noEmpleado':
+          return e.noEmpleado.value.toString() === value;
+        case 'nombreEmpleado':
+          return e.nombreEmpleado.value === value;
+        case 'fechaIngreso':
+          return e.fechaIngreso.value.toString() === value;
+        case 'diasVacaciones':
+          return e.diasVacaciones.value.toString() === value;
+        default:
+          return false;
+      }
+    });
+  }
+
   public async getById(id: EmpleadoID): Promise<Empleado | null> {
     const index = this.empleados.findIndex(e => e.empleadoId.value === id.value);
 
@@ -20,17 +51,29 @@ export class InMemoryEmpleadosRepository implements EmpleadoRepository {
   }
 
   public async getOneBy(campo: string, value: string): Promise<Empleado | null> {
-    if (
-      campo !== 'noEmpleado' &&
-      campo !== 'empleadoId' &&
-      campo !== 'nombreEmpleado' &&
-      campo !== 'fechaIngreso'
-    ) {
-      throw new Error('campo invalido');
+    if (!this.validFields.includes(campo as (typeof this.validFields)[number])) {
+      throw new InvalidDataException({
+        message: 'Campo Invalido',
+        campo: campo,
+        data: value,
+      });
     }
-    const empleado = this.empleados.find(e => e[campo].value.toString() === value) || null;
+    const empleado = this.empleados.find(e => {
+      switch (campo) {
+        case 'noEmpleado':
+          return e.noEmpleado.value.toString() === value;
+        case 'nombreEmpleado':
+          return e.nombreEmpleado.value === value;
+        case 'fechaIngreso':
+          return e.fechaIngreso.value.toString() === value;
+        case 'diasVacaciones':
+          return e.diasVacaciones.value.toString() === value;
+        default:
+          return false;
+      }
+    });
 
-    return empleado;
+    return empleado || null;
   }
 
   public async update(empleado: Empleado): Promise<void> {
