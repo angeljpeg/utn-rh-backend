@@ -1,0 +1,36 @@
+import { Empleado } from '../Domain/Empleado';
+import { EmpleadoID } from '../Domain/EmpleadoId';
+import { EmpleadoRepository } from '../Domain/EmpleadoRepository';
+
+export class InMemoryEmpleadosRepository implements EmpleadoRepository {
+  public empleados: Empleado[] = [];
+
+  public async create(empleado: Empleado): Promise<void> {
+    this.empleados.push(empleado);
+  }
+
+  public async getAll(): Promise<Empleado[]> {
+    return this.empleados;
+  }
+
+  public async getById(id: EmpleadoID): Promise<Empleado | null> {
+    const index = this.empleados.findIndex(e => e.EmpleadoId.value === id.value);
+
+    return this.empleados[index] || null;
+  }
+
+  public async getOneBy(campo: string, value: string): Promise<Empleado | null> {
+    const empleado = this.empleados.find(e => e[campo].value === value) || null;
+
+    return empleado;
+  }
+
+  public async update(empleado: Empleado): Promise<void> {
+    const index = this.empleados.findIndex(e => e.EmpleadoId.value === empleado.EmpleadoId.value);
+    this.empleados[index] = empleado;
+  }
+
+  public async delete(id: EmpleadoID): Promise<void> {
+    this.empleados.filter(e => e.EmpleadoId.value !== id.value);
+  }
+}
