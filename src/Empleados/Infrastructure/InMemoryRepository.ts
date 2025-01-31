@@ -14,13 +14,18 @@ export class InMemoryEmpleadosRepository implements EmpleadoRepository {
   }
 
   public async getById(id: EmpleadoID): Promise<Empleado | null> {
-    const index = this.empleados.findIndex(e => e.EmpleadoId.value === id.value);
+    const index = this.empleados.findIndex(e => e.empleadoId.value === id.value);
 
     return this.empleados[index] || null;
   }
 
   public async getOneBy(campo: string, value: string): Promise<Empleado | null> {
-    if (campo !== 'NoEmpleado') {
+    if (
+      campo !== 'noEmpleado' &&
+      campo !== 'empleadoId' &&
+      campo !== 'nombreEmpleado' &&
+      campo !== 'fechaIngreso'
+    ) {
       throw new Error('campo invalido');
     }
     const empleado = this.empleados.find(e => e[campo].value.toString() === value) || null;
@@ -29,11 +34,11 @@ export class InMemoryEmpleadosRepository implements EmpleadoRepository {
   }
 
   public async update(empleado: Empleado): Promise<void> {
-    const index = this.empleados.findIndex(e => e.EmpleadoId.value === empleado.EmpleadoId.value);
+    const index = this.empleados.findIndex(e => e.empleadoId.value === empleado.empleadoId.value);
     this.empleados[index] = empleado;
   }
 
   public async delete(id: EmpleadoID): Promise<void> {
-    this.empleados.filter(e => e.EmpleadoId.value !== id.value);
+    this.empleados.filter(e => e.empleadoId.value !== id.value);
   }
 }
