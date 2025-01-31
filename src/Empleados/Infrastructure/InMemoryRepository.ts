@@ -20,7 +20,10 @@ export class InMemoryEmpleadosRepository implements EmpleadoRepository {
   }
 
   public async getOneBy(campo: string, value: string): Promise<Empleado | null> {
-    const empleado = this.empleados.find(e => e[campo].value === value) || null;
+    if (campo !== 'NoEmpleado') {
+      throw new Error('campo invalido');
+    }
+    const empleado = this.empleados.find(e => e[campo].value.toString() === value) || null;
 
     return empleado;
   }
