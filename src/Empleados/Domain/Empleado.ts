@@ -1,8 +1,8 @@
-import { DiasdeVacaciones } from "./DiasdeVacaciones";
-import { EmpleadoID } from "./EmpleadoId";
-import { FechaIngreso } from "./FechaDeIngreso";
-import { NoEmpleado } from "./NoEmpleado";
-import { NombreEmplado } from "./NombreEmpleado";
+import { DiasdeVacaciones } from './DiasdeVacaciones';
+import { EmpleadoID } from './EmpleadoId';
+import { FechaIngreso } from './FechaDeIngreso';
+import { NoEmpleado } from './NoEmpleado';
+import { NombreEmplado } from './NombreEmpleado';
 
 export class Empleado {
   public EmpleadoId: EmpleadoID;
@@ -16,11 +16,30 @@ export class Empleado {
     NombreEmplado: NombreEmplado,
     NoEmpleado: NoEmpleado,
     FechaIngreso: FechaIngreso,
+    DiasdeVacaciones: DiasdeVacaciones,
   ) {
     this.EmpleadoId = EmpleadoID;
     this.NombreEmplado = NombreEmplado;
     this.NoEmpleado = NoEmpleado;
     this.FechaIngreso = FechaIngreso;
-    this.DiasdeVacaciones = new DiasdeVacaciones(2);
+    this.DiasdeVacaciones = DiasdeVacaciones;
   }
+
+  public toPrimitives(): EmpleadoPrimitive {
+    return {
+      empleadoId: this.EmpleadoId.value,
+      nombreEmplado: this.NombreEmplado.value,
+      noEmpleado: this.NoEmpleado.value,
+      diasdeVacaciones: this.DiasdeVacaciones.value,
+      fechaIngreso: this.FechaIngreso.value,
+    };
+  }
+}
+
+export interface EmpleadoPrimitive {
+  empleadoId: string;
+  nombreEmplado: string;
+  noEmpleado: number;
+  diasdeVacaciones: number;
+  fechaIngreso: Date;
 }

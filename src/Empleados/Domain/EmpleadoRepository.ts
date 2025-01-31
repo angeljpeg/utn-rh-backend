@@ -1,5 +1,6 @@
-import { Empleado } from "./Empleado";
+import { Empleado } from './Empleado';
 
-export interface EmpleadoRepository{
-    create(Empleado:Empleado): Promise<void>
+export interface EmpleadoRepository {
+  create(Empleado: Empleado): Promise<void>;
+  getAll(): Promise<Empleado[]>;
 }
