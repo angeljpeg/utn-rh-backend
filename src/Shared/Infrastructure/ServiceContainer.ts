@@ -1,4 +1,5 @@
-// Usuarios Use Cases
+// USUARIOS
+// Casos de Uso
 import { CreateUsuario } from '@/src/Usuarios/Application/CreateUsuario/CreateUsuario';
 import { DeleteUsuario } from '@/src/Usuarios/Application/DeleteUsuario/DeleteUsuario';
 import { GetAllUsuarios } from '@/src/Usuarios/Application/GetAllUsuarios/GetAllUsuarios';
@@ -6,13 +7,11 @@ import { GetUsuarioBy } from '@/src/Usuarios/Application/GetUsuarioBy/GetUsuario
 import { GetUsuarioById } from '@/src/Usuarios/Application/GetUsuarioByID/GetUsuarioById';
 import { LoginUsuario } from '@/src/Usuarios/Application/LoginUsuario/LoginUsuario';
 import { UpdateUsuario } from '@/src/Usuarios/Application/UpdateUsuario.ts/UpdateUsuario';
-// Usuarios Repositories
+// Repositories
 import { DrizzleMySQLRepository } from '@/src/Usuarios/Infrastructure/DrizzleMySQLRepository';
-import { CreateEmpleado } from '@/src/Empleados/Application/CreateEmpleado/CreateEmpleado';
-import { DrizzleMySQLEmpleadoRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLEmpleadoRepository';
-//import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
 const UsuarioRepository = new DrizzleMySQLRepository();
-const EmpleadoRepository = new DrizzleMySQLEmpleadoRepository();
+
+// EMPLEADOS
 
 export const ServiceContainer = {
   usuario: {
@@ -24,7 +23,5 @@ export const ServiceContainer = {
     update: new UpdateUsuario(UsuarioRepository),
     delete: new DeleteUsuario(UsuarioRepository),
   },
-  empleado: {
-    create: new CreateEmpleado(EmpleadoRepository),
-  },
+  empleado: {},
 };
