@@ -1,3 +1,4 @@
+import { UsuarioGenero } from './UsuarioGenero';
 import { UsuarioId } from './UsuarioId';
 import { UsuarioMatricula } from './UsuarioMatricula';
 import { UsuarioNombre } from './UsuarioNombre';
@@ -8,17 +9,20 @@ export class Usuario {
   public matricula: UsuarioMatricula;
   public password: UsuarioPassword;
   public nombre: UsuarioNombre;
+  public genero: UsuarioGenero;
 
   public constructor(
     id: UsuarioId,
     matricula: UsuarioMatricula,
     password: UsuarioPassword,
     nombre: UsuarioNombre,
+    genero: UsuarioGenero,
   ) {
     this.usuarioId = id;
     this.matricula = matricula;
     this.password = password;
     this.nombre = nombre;
+    this.genero = genero;
   }
 
   public toPrimitive(): UsuarioPrimitive {
@@ -27,6 +31,7 @@ export class Usuario {
       matricula: this.matricula.value,
       password: this.password.value,
       nombre: this.nombre.value,
+      genero: this.genero.value,
     };
   }
 }
@@ -36,4 +41,5 @@ export type UsuarioPrimitive = {
   matricula: string;
   password: string;
   nombre: string;
+  genero: string;
 };

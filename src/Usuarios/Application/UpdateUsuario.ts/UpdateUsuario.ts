@@ -1,4 +1,5 @@
 import { Usuario } from '../../Domain/Entities/Usuario';
+import { UsuarioGenero } from '../../Domain/Entities/UsuarioGenero';
 import { UsuarioId } from '../../Domain/Entities/UsuarioId';
 import { UsuarioMatricula } from '../../Domain/Entities/UsuarioMatricula';
 import { UsuarioNombre } from '../../Domain/Entities/UsuarioNombre';
@@ -18,6 +19,7 @@ export class UpdateUsuario {
       new UsuarioMatricula(usuario.matricula),
       new UsuarioPassword(usuario.password),
       new UsuarioNombre(usuario.nombre),
+      new UsuarioGenero(usuario.genero),
     );
 
     return this.usuarioRepository.update(updatedUsuario);
