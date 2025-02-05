@@ -3,5 +3,5 @@ export interface CreateUsuarioDto {
   matricula: string;
   password: string;
   nombre: string;
-  genero: string;
+  genero: 'M' | 'F';
 }
