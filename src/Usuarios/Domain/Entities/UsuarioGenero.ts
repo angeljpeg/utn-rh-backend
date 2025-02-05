@@ -1,13 +1,14 @@
 import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
 
 export class UsuarioGenero {
-  public value: string;
+  public value: 'M' | 'F';
 
-  public constructor(value: string) {
+  public constructor(value: 'M' | 'F') {
+    this.ensureIsValid(value);
     this.value = value;
   }
 
-  public ensureIsValid(value: string): void {
+  public ensureIsValid(value: 'M' | 'F'): void {
     if (!value)
       throw new InvalidDataException({
         message: 'El Genero es necesario',

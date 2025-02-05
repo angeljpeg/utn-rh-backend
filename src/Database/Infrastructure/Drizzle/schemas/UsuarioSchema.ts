@@ -1,4 +1,4 @@
-import { mysqlEnum, mysqlTable, varchar } from 'drizzle-orm/mysql-core';
+import { mysqlTable, varchar, mysqlEnum } from 'drizzle-orm/mysql-core';
 export const UsuariosSchema = mysqlTable('usuarios', {
   usuarioId: varchar({ length: 36 }).primaryKey(),
   nombre: varchar({ length: 50 }).notNull(),

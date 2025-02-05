@@ -10,6 +10,7 @@ import { db } from '@/src/Database/Infrastructure/Drizzle/DrizzleMySQLService';
 import { eq } from 'drizzle-orm';
 import { UsuariosSchema as usuarios } from '@/src/Database/Infrastructure/Drizzle/schemas/UsuarioSchema';
 import { UsuarioNombre } from '../Domain/Entities/UsuarioNombre';
+import { UsuarioGenero } from '../Domain/Entities/UsuarioGenero';
 
 export class DrizzleMySQLRepository implements UsuarioRepository {
   public async create(usuario: Usuario): Promise<void> {
@@ -18,6 +19,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
       matricula: usuario.matricula.value,
       password: usuario.password.value,
       nombre: usuario.nombre.value,
+      genero: usuario.genero.value,
     });
   }
 
@@ -29,6 +31,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
         new UsuarioMatricula(u.matricula),
         new UsuarioPassword(u.password),
         new UsuarioNombre(u.nombre),
+        new UsuarioGenero(u.genero),
       );
     });
   }
@@ -41,6 +44,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
           new UsuarioNombre(usuario[0].nombre),
+          new UsuarioGenero(usuario[0].genero),
         )
       : null;
   }
@@ -65,6 +69,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
           new UsuarioNombre(usuario[0].nombre),
+          new UsuarioGenero(usuario[0].genero),
         )
       : null;
   }
@@ -94,6 +99,7 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
           new UsuarioMatricula(usuario[0].matricula),
           new UsuarioPassword(usuario[0].password),
           new UsuarioNombre(usuario[0].nombre),
+          new UsuarioGenero(usuario[0].genero),
         )
       : null;
   }
