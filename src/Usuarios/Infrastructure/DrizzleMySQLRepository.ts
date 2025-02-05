@@ -4,6 +4,7 @@ import { UsuarioId } from '../Domain/Entities/UsuarioId';
 import { UsuarioMatricula } from '../Domain/Entities/UsuarioMatricula';
 import { UsuarioPassword } from '../Domain/Entities/UsuarioPassword';
 import { UsuarioRepository } from '../Domain/Entities/UsuarioRepository';
+import { UsuariosQuery } from '../Domain/Interfaces/UsuariosQuery';
 
 // Drizzle
 import { db } from '@/src/Database/Infrastructure/Drizzle/DrizzleMySQLService';
@@ -23,8 +24,12 @@ export class DrizzleMySQLRepository implements UsuarioRepository {
     });
   }
 
-  public async getAll(): Promise<Usuario[]> {
-    const allUsuarios = await db.select().from(usuarios);
+  public async getAll({ page, perPage }: UsuariosQuery): Promise<Usuario[]> {
+    const allUsuarios = await db
+      .select()
+      .from(usuarios)
+      .limit(perPage)
+      .offset(page * perPage);
     return allUsuarios.map(u => {
       return new Usuario(
         new UsuarioId(u.usuarioId),

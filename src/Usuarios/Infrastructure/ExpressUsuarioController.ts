@@ -19,7 +19,11 @@ export class ExpressUsuarioController {
 
   public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const usuarios = await ServiceContainer.usuario.getAll.run();
+      const { page = 0, perPage = 1 } = req.query;
+      const usuarios = await ServiceContainer.usuario.getAll.run({
+        page: Number(page),
+        perPage: Number(perPage),
+      });
       res.status(200).json(usuarios);
     } catch (error) {
       next(error);

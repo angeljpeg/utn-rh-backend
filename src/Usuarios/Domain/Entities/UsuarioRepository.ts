@@ -4,7 +4,7 @@ import { UsuarioId } from './UsuarioId';
 
 export interface UsuarioRepository {
   create(usuario: Usuario): Promise<void>;
-  getAll(query: UsuariosQuery): Promise<Usuario[]>;
+  getAll(query?: UsuariosQuery): Promise<Usuario[]>;
   getById(id: UsuarioId): Promise<Usuario | null>;
   getOneBy(campo: string, value: string): Promise<Usuario | null>;
   update(usuario: Usuario): Promise<void>;

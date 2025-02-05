@@ -7,10 +7,10 @@ import { GetUsuarioBy } from '@/src/Usuarios/Application/GetUsuarioBy/GetUsuario
 import { GetUsuarioById } from '@/src/Usuarios/Application/GetUsuarioByID/GetUsuarioById';
 import { LoginUsuario } from '@/src/Usuarios/Application/LoginUsuario/LoginUsuario';
 import { UpdateUsuario } from '@/src/Usuarios/Application/UpdateUsuario.ts/UpdateUsuario';
-import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
+//import { InMemoryRepository } from '@/src/Usuarios/Infrastructure/InMemoryRepository';
 // Repositories
-//import { DrizzleMySQLRepository } from '@/src/Usuarios/Infrastructure/DrizzleMySQLRepository';
-const UsuarioRepository = new InMemoryRepository();
+import { DrizzleMySQLRepository } from '@/src/Usuarios/Infrastructure/DrizzleMySQLRepository';
+const UsuarioRepository = new DrizzleMySQLRepository();
 
 // EMPLEADOS
 
