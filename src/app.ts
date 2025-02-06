@@ -8,16 +8,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Pre Middlewares
-
 // Routes
-
 app.all('*', (req, res, next) => {
   res.status(404).json({ message: 'Not found' });
   next();
 });
 
-// Post Middlewares
+// Middlewares
 app.use(handlerError);
 
 export { app };
