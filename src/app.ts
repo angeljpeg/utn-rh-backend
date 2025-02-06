@@ -1,18 +1,23 @@
 import express from 'express';
 import cors from 'cors';
-import { UsuarioRouter } from './Usuarios/Infrastructure/ExpressUsuarioRouter';
-import { catchErrorsMiddleware } from './middlewares/CatchErrorsMiddleware';
-import { EmpleadoRouter } from './Empleados/Infrastructure/ExpressEmpleadoRouter';
+import handlerError from './Utils/Middlewares/HandlerError';
 
 const app = express();
 
+// Config
 app.use(express.json());
 app.use(cors());
 
-app.use(UsuarioRouter);
-app.use(EmpleadoRouter);
+// Pre Middlewares
 
-// Middlewares
-app.use(catchErrorsMiddleware);
+// Routes
+
+app.all('*', (req, res, next) => {
+  res.status(404).json({ message: 'Not found' });
+  next();
+});
+
+// Post Middlewares
+app.use(handlerError);
 
 export { app };
