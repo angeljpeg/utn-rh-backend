@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import handlerError from './Utils/Middlewares/HandlerError';
+import handlerError from './Shared/Infrastructure/Utils/Middlewares/HandlerError';
 
 const app = express();
 
