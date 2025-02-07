@@ -1,8 +1,8 @@
-import { date, int, mysqlTable, varchar } from 'drizzle-orm/mysql-core';
+import { date, decimal, int, mysqlEnum, mysqlTable, varchar } from 'drizzle-orm/mysql-core';
 export const EmpleadoSchema = mysqlTable('empleados', {
-  EmpleadoId: varchar({ length: 36 }).primaryKey(),
-  nombreEmplado: varchar({ length: 50 }).notNull(),
-  NoEmpleado: int().notNull().unique(),
-  FechadeIngreso: date().notNull(),
-  DiasVacaciones: int().notNull(),
+  id: int().primaryKey(),
+  nombre: varchar({ length: 50 }).notNull(),
+  genero: mysqlEnum(['M', 'F']).notNull(),
+  fecha_ingreso: date().notNull(),
+  antiguedad: decimal().notNull(),
 });
