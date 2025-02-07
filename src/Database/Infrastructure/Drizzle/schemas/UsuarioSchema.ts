@@ -1,8 +1,9 @@
-import { mysqlTable, varchar, mysqlEnum } from 'drizzle-orm/mysql-core';
+import { mysqlTable, varchar, int } from 'drizzle-orm/mysql-core';
+import { EmpleadoSchema } from './EmpleadoSchema';
+import { RolSchema } from './RolSchema';
 export const UsuariosSchema = mysqlTable('usuarios', {
-  usuarioId: varchar({ length: 36 }).primaryKey(),
-  nombre: varchar({ length: 50 }).notNull(),
-  matricula: varchar({ length: 8 }).notNull(),
-  password: varchar({ length: 8 }).notNull(),
-  genero: mysqlEnum(['M', 'F']).notNull(),
+  usuario_id: int().autoincrement().primaryKey(),
+  empleado_id: int().references(() => EmpleadoSchema.id),
+  password: varchar({ length: 255 }).notNull(),
+  rol_id: int().references(() => RolSchema.id),
 });
