@@ -3,6 +3,7 @@ import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidData
 export class PrestacionSolicitudId {
   public value: number;
   public constructor(value: number) {
+    this.ensureIsValid(value);
     this.value = value;
   }
   private ensureIsValid(value: number): void {
