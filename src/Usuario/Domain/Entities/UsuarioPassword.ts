@@ -1,4 +1,4 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class UsuarioPassword {
   public value: string;
@@ -8,9 +8,10 @@ export class UsuarioPassword {
   }
   private ensureIsValid(value: string): void {
     if (!value)
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'El password es necesario',
         campo: 'UsuarioPassword',
+        data: value,
       });
   }
 }

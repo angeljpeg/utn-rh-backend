@@ -4,28 +4,36 @@ export class EmpleadoNombre {
   public value: string;
 
   public constructor(value: string) {
+    this.ensureIsValid(value);
     this.value = value;
   }
-  public ensureIsValid(): void {
-    if (!this.value)
+  private ensureIsValid(value: string): void {
+    if (!value)
       throw new BadRequest({
         message: 'El Nombre es necesario',
         campo: 'EmpleadoNombre',
-        data: this.value,
+        data: value,
       });
 
-    if (this.value.length < 3)
+    if (value.length < 3)
       throw new BadRequest({
         message: 'El Nombre debe ser al menos 3 caracteres',
         campo: 'EmpleadoNombre',
-        data: this.value,
+        data: value,
       });
 
-    if (this.value.length > 50)
+    if (value.length < 3)
+      throw new BadRequest({
+        message: 'El Nombre debe ser al menos 3 caracteres',
+        campo: 'EmpleadoNombre',
+        data: value,
+      });
+
+    if (value.length > 50)
       throw new BadRequest({
         message: 'El Nombre debe ser al menos 50 caracteres',
         campo: 'EmpleadoNombre',
-        data: this.value,
+        data: value,
       });
   }
 }

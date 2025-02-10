@@ -1,27 +1,28 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class PrestacionRequisitos {
   public value: string;
   public constructor(value: string) {
+    this.ensureIsValid(value);
     this.value = value;
   }
-  public ensureIsValid(): void {
-    if (!this.value)
-      throw new InvalidDataException({
+  private ensureIsValid(value: string): void {
+    if (!value)
+      throw new BadRequest({
         message: 'El requisito de la prestacion es nesecario',
         campo: 'PrestacionRequisitos',
-        data: this.value,
+        data: value,
       });
 
-    if (this.value.length < 3)
-      throw new InvalidDataException({
+    if (value.length < 3)
+      throw new BadRequest({
         message: 'El requisito debe ser al menos 3 caracteres',
         campo: 'PrestacionRequisitos',
-        data: this.value,
+        data: value,
       });
 
     if (this.value.length > 500)
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'El requisito debe ser al menos 500 caracteres',
         campo: 'PrestacionRequisitos',
         data: this.value,
