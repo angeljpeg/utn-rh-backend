@@ -1,4 +1,4 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoAntiguedad {
   public value: number;
@@ -8,22 +8,22 @@ export class EmpleadoAntiguedad {
   }
   private ensureIsValid(value: number): void {
     if (!value)
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'La antiguedad del empleado es necesaria',
         campo: 'EmpleadoAntiguedad',
       });
 
     if (!isNaN(value)) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'La antiguedad tiene que ser un numero',
-        campo: 'EmpleadoAntigueadad',
+        campo: 'EmpleadoAntiguedad',
         data: value,
       });
     }
     if (value < 0) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'La antiguedad tiene que ser mayor que cero',
-        campo: 'EmpleadoAntigueadad',
+        campo: 'EmpleadoAntiguedad',
         data: value,
       });
     }

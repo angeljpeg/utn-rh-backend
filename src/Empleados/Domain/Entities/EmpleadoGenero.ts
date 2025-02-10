@@ -1,4 +1,4 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoGenero {
   public value: 'M' | 'F';
@@ -8,13 +8,13 @@ export class EmpleadoGenero {
   }
   private ensureIsValid(value: 'M' | 'F'): void {
     if (!value) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'Favor de Seleccionar un Sexo',
         campo: 'EmpleadoGenero',
       });
     }
     if (value !== 'M' && value !== 'F') {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'Favor de Seleccionar un Sexo que sea Valido Como M o F',
         campo: 'EmpleadoGenero',
         data: value,

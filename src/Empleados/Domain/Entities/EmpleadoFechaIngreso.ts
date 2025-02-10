@@ -1,4 +1,4 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoFechaIngreso {
   public value: Date;
@@ -11,14 +11,14 @@ export class EmpleadoFechaIngreso {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     const dateString = value.toISOString().split('T')[0];
     if (!value) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'Favor de Ingresar Una Fecha',
         campo: 'EmpleadoFechaIngreso',
       });
     }
 
     if (!regex.test(dateString)) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'favor la fecha en el formato correcto YYYY/MM/DD',
         campo: 'EmpleadoFechaIngreso',
         data: dateString,
