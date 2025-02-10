@@ -1,0 +1,3 @@
+export const PARENTESCOS = ['PADRE', 'MADRE', 'HIJO/A', 'HERMANO/A'] as const;
+
+export type Parentesco = (typeof PARENTESCOS)[number];
