@@ -1,4 +1,4 @@
-import { InvalidDataException } from '@/src/Shared/Domain/Exceptions/InvalidDataException';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class PrestacionSolicitudId {
   public value: number;
@@ -8,13 +8,13 @@ export class PrestacionSolicitudId {
   }
   private ensureIsValid(value: number): void {
     if (!value)
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'El numero de la solicitud de prestacion es necesario',
         campo: 'SolicitudId',
       });
 
     if (!isNaN(value)) {
-      throw new InvalidDataException({
+      throw new BadRequest({
         message: 'El numero de la solicitud de prestacion tiene que ser un numero',
         campo: 'SolicitudId',
         data: value,
