@@ -1,34 +1,47 @@
-import { PrestacionAntiguedadMinima } from "./PrestacionAntiguiedadMinima";
-import { PrestacionDescripcion } from "./PrestacionDescripcion";
-import { PrestacionFrecuencia } from "./PrestacionFrecuencia";
-import { PrestacionId } from "./PrestacionId";
-import { PrestacionMonto } from "./PrestacionMonto";
-import { PrestacionNombre } from "./PrestacionNombre";
-import { PrestacionRequisitos } from "./PrestacionRequisitos";
+import { PrestacionPrimitive } from '../Interfaces/PrestacionPrimitive';
+import { PrestacionAntiguedadMinima } from './PrestacionAntiguiedadMinima';
+import { PrestacionDescripcion } from './PrestacionDescripcion';
+import { PrestacionFrecuencia } from './PrestacionFrecuencia';
+import { PrestacionId } from './PrestacionId';
+import { PrestacionMonto } from './PrestacionMonto';
+import { PrestacionNombre } from './PrestacionNombre';
+import { PrestacionRequisitos } from './PrestacionRequisitos';
 
-export class Prestacion{
-    public PretacionId:PrestacionId
-    public PrestacionNombre:PrestacionNombre
-    public PrestacionDescripcion:PrestacionDescripcion
-    public PrestacionMonto:PrestacionMonto
-    public PrestacionFrecuencia:PrestacionFrecuencia
-    public PrestacionRequisitos:PrestacionRequisitos
-    public PrestacionAntiguedadMinima:PrestacionAntiguedadMinima
- public constructor(
-    id:PrestacionId,
-    nombre:PrestacionNombre,
-    descripcion:PrestacionDescripcion,
-    monto:PrestacionMonto,
-    frecuencia:PrestacionFrecuencia,
-    requisitos:PrestacionRequisitos,
-    antiguedadminima:PrestacionAntiguedadMinima
- ){
-   this.PretacionId=id
-   this.PrestacionNombre=nombre
-   this.PrestacionDescripcion=descripcion
-   this.PrestacionMonto=monto
-   this.PrestacionFrecuencia=frecuencia
-   this.PrestacionRequisitos=requisitos
-   this.PrestacionAntiguedadMinima=antiguedadminima
- }
+export class Prestacion {
+  public Id: PrestacionId;
+  public Nombre: PrestacionNombre;
+  public Descripcion: PrestacionDescripcion;
+  public Monto: PrestacionMonto;
+  public Frecuencia: PrestacionFrecuencia;
+  public Requisitos: PrestacionRequisitos;
+  public AntiguedadMinima: PrestacionAntiguedadMinima;
+  public constructor(
+    id: PrestacionId,
+    nombre: PrestacionNombre,
+    descripcion: PrestacionDescripcion,
+    monto: PrestacionMonto,
+    frecuencia: PrestacionFrecuencia,
+    requisitos: PrestacionRequisitos,
+    antiguedadMinima: PrestacionAntiguedadMinima,
+  ) {
+    this.Id = id;
+    this.Nombre = nombre;
+    this.Descripcion = descripcion;
+    this.Monto = monto;
+    this.Frecuencia = frecuencia;
+    this.Requisitos = requisitos;
+    this.AntiguedadMinima = antiguedadMinima;
+  }
+
+  public toPrestacionPrimitive(): PrestacionPrimitive {
+    return {
+      Id: this.Id.value,
+      Nombre: this.Nombre.value,
+      Descripcion: this.Descripcion.value,
+      Monto: this.Monto.value,
+      Frecuencia: this.Frecuencia.value,
+      Requisitos: this.Requisitos.value,
+      AntiguedadMinima: this.AntiguedadMinima.value,
+    };
+  }
 }
