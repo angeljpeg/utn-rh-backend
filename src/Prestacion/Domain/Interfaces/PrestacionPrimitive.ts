@@ -1,9 +1,9 @@
 export interface PrestacionPrimitive {
-  Id: number;
-  Nombre: string;
-  Descripcion: string;
-  Monto: number;
-  Frecuencia: string;
-  Requisitos: string;
-  AntiguedadMinima: number;
+  id: number;
+  nombre: string;
+  descripcion: string;
+  monto: number;
+  frecuencia: string;
+  requisitos: string;
+  antiguedadMinima: number;
 }

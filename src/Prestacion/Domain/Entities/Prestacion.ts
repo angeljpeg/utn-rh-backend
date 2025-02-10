@@ -35,13 +35,13 @@ export class Prestacion {
 
   public toPrestacionPrimitive(): PrestacionPrimitive {
     return {
-      Id: this.Id.value,
-      Nombre: this.Nombre.value,
-      Descripcion: this.Descripcion.value,
-      Monto: this.Monto.value,
-      Frecuencia: this.Frecuencia.value,
-      Requisitos: this.Requisitos.value,
-      AntiguedadMinima: this.AntiguedadMinima.value,
+      id: this.Id.value,
+      nombre: this.Nombre.value,
+      descripcion: this.Descripcion.value,
+      monto: this.Monto.value,
+      frecuencia: this.Frecuencia.value,
+      requisitos: this.Requisitos.value,
+      antiguedadMinima: this.AntiguedadMinima.value,
     };
   }
 }

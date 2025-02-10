@@ -1,5 +1,5 @@
 import { Prestacion } from './Prestacion';
 
 export interface PrestacionRepository {
-  save(prestacion: Prestacion): Promise<void>;
+  create(prestacion: Prestacion): Promise<void>;
 }
