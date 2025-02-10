@@ -6,4 +6,4 @@ export const NIVEL_EDUCATIVO = [
   'NO APLICA',
 ] as const;
 
-export type NivelEducativo = (typeof NIVEL_EDUCATIVO)[number];
+export type NivelEducativoType = (typeof NIVEL_EDUCATIVO)[number];

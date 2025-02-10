@@ -1,7 +1,7 @@
 import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
-import { ParentescoType, PARENTESCOS } from '../Interface/Parentesco';
+import { ESTATUS, EstatusType } from '@/src/Shared/Domain/Interfaces/Estatus';
 
-export class BeneficiariosParentesco {
+export class DescansoSolicitudEstatus {
   public value: string;
   public constructor(value: string) {
     this.ensureIsValid(value);
@@ -11,15 +11,14 @@ export class BeneficiariosParentesco {
   private ensureIsValid(value: string): void {
     if (!value)
       throw new BadRequest({
-        message: 'El parentesco es necesario',
-        campo: 'BeneficiariosParentesco',
-        data: value,
+        message: 'El estatus es necesario',
+        campo: 'DescansoSolicitudEstatus',
       });
 
-    if (!PARENTESCOS.includes(value as ParentescoType)) {
+    if (!ESTATUS.includes(value as EstatusType)) {
       throw new BadRequest({
-        message: 'El parentesco es inválido',
-        campo: 'BeneficiariosParentesco',
+        message: 'El estatus tiene que ser un estatus valido',
+        campo: 'DescansoSolicitudEstatus',
         data: value,
       });
     }
