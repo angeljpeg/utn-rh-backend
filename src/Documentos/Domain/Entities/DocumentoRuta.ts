@@ -21,7 +21,7 @@ export class DocumentoRuta {
         data: value,
       });
 
-    if (value.length > 50)
+    if (value.length > 255)
       throw new BadRequest({
         message: 'La ruta  del Documento debe ser al menos 50 caracteres',
         campo: 'DocumentoRuta',
