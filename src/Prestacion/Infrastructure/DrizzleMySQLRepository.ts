@@ -5,6 +5,7 @@ import { db } from '@/src/Database/Infrastructure/Drizzle/DrizzleMySQLService';
 import { PrestacionSchema as prestaciones } from '@/src/Database/Infrastructure/Drizzle/schemas/PrestacionSchema';
 import { PrestacionPrimitive } from '../Domain/Interfaces/PrestacionPrimitive';
 import { IQuery } from '@/src/Shared/Domain/Interfaces/Query';
+import { asc, desc } from 'drizzle-orm';
 export class PrestacionMySQLRepository implements PrestacionRepository {
   public async create(prestacion: Omit<PrestacionPrimitive, 'id'>): Promise<void> {
     try {
@@ -21,10 +22,16 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
     }
   }
 
-  public async getAll({ page, perPage }: IQuery): Promise<PrestacionPrimitive[]> {
+  public async getAll({
+    page,
+    perPage,
+    order,
+    orderBy,
+  }: IQuery<PrestacionPrimitive>): Promise<PrestacionPrimitive[]> {
     const AllPrestaciones = db
       .select()
       .from(prestaciones)
+      .orderBy(order === 'asc' ? asc(prestaciones[orderBy]) : desc(prestaciones[orderBy]))
       .limit(perPage)
       .offset(page * perPage);
     return AllPrestaciones;

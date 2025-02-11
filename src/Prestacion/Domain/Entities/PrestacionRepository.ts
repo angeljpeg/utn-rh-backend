@@ -3,5 +3,5 @@ import { PrestacionPrimitive } from '../Interfaces/PrestacionPrimitive';
 
 export interface PrestacionRepository {
   create(prestacion: PrestacionPrimitive): Promise<void>;
-  getAll(query: IQuery): Promise<PrestacionPrimitive[]>;
+  getAll(query: IQuery<PrestacionPrimitive>): Promise<PrestacionPrimitive[]>;
 }

@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ServiceContainer } from '@/src/Shared/Infrastructure/ServiceContainer';
+import { PrestacionPrimitive } from '../Domain/Interfaces/PrestacionPrimitive';
 //import { IQuery } from '@/src/Shared/Domain/Interfaces/Query';
 
 const { prestaciones: Prestacion } = ServiceContainer;
@@ -17,10 +18,12 @@ export class PrestacionController {
 
   public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { page = 1, perPage = 10 } = req.query;
+      const { page = 1, perPage = 10, order = 'asc', orderBy } = req.query;
       const prestaciones = await Prestacion.getAll.run({
         page: Number(page),
         perPage: Number(perPage),
+        order: order as 'asc' | 'desc',
+        orderBy: orderBy as keyof PrestacionPrimitive,
       });
 
       res.status(200).json(prestaciones);
