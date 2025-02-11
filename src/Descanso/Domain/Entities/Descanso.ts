@@ -1,3 +1,4 @@
+import { DescansoPrimitive } from '../Interface/DescansoPrimitive';
 import { DescasnoDescripcion } from './DescansoDescripcion';
 import { DescansoId } from './DescansoId';
 import { DescansoNombre } from './DescansoNombre';
@@ -10,5 +11,13 @@ export class Descanso {
     this.DescansoId = id;
     this.DescansoNombre = nombre;
     this.DescansoDescripcion = descripcion;
+  }
+
+  public toPrimitive(): DescansoPrimitive {
+    return {
+      id: this.DescansoId.value,
+      nombre: this.DescansoNombre.value,
+      descripcion: this.DescansoDescripcion.value,
+    };
   }
 }

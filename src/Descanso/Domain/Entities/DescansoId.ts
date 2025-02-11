@@ -21,4 +21,8 @@ export class DescansoId {
       });
     }
   }
+
+  public static autoGenerate(): DescansoId {
+    return new DescansoId(Math.floor(Math.random() * 1000));
+  }
 }
