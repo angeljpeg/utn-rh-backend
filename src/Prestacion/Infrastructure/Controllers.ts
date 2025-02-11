@@ -30,4 +30,14 @@ export class PrestacionController {
       next(error);
     }
   }
+
+  public async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+      const prestacion = await Prestacion.getById.run(Number(id));
+      res.status(200).json(prestacion);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
