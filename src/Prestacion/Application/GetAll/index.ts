@@ -5,7 +5,7 @@ import { PrestacionPrimitive } from '../../Domain/Interfaces/PrestacionPrimitive
 export class GetAllPrestaciones {
   public constructor(private readonly prestacionRepo: PrestacionRepository) {}
 
-  public async run(query: IQuery): Promise<PrestacionPrimitive[]> {
+  public async run(query: IQuery<PrestacionPrimitive>): Promise<PrestacionPrimitive[]> {
     const prestaciones = await this.prestacionRepo.getAll(query);
 
     return prestaciones;
