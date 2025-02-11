@@ -22,7 +22,11 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
   }
 
   public async getAll({ page, perPage }: IQuery): Promise<PrestacionPrimitive[]> {
-    const AllPrestaciones = db.select().from(prestaciones).limit(perPage).offset(page);
+    const AllPrestaciones = db
+      .select()
+      .from(prestaciones)
+      .limit(perPage)
+      .offset(page * perPage);
     return AllPrestaciones;
   }
 }
