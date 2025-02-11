@@ -17,9 +17,11 @@ export class PrestacionController {
 
   public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const page = 0;
-      const perPage = 0;
-      const prestaciones = await Prestacion.getAll.run({ page, perPage });
+      const { page = 1, perPage = 10 } = req.query;
+      const prestaciones = await Prestacion.getAll.run({
+        page: Number(page),
+        perPage: Number(perPage),
+      });
 
       res.status(200).json(prestaciones);
     } catch (error) {
