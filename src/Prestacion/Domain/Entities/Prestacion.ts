@@ -38,10 +38,10 @@ export class Prestacion {
       id: this.Id.value,
       nombre: this.Nombre.value,
       descripcion: this.Descripcion.value,
-      monto: this.Monto.value,
+      monto_maximo: this.Monto.value,
       frecuencia: this.Frecuencia.value,
       requisitos: this.Requisitos.value,
-      antiguedadMinima: this.AntiguedadMinima.value,
+      antiguedad_minima: this.AntiguedadMinima.value,
     };
   }
 }

@@ -1,5 +1,5 @@
-import { Prestacion } from './Prestacion';
+import { PrestacionPrimitive } from '../Interfaces/PrestacionPrimitive';
 
 export interface PrestacionRepository {
-  create(prestacion: Prestacion): Promise<void>;
+  create(prestacion: PrestacionPrimitive): Promise<void>;
 }

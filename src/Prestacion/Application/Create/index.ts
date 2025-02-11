@@ -13,11 +13,11 @@ export class CreatePrestacion {
   public constructor(private readonly prestacionRepo: PrestacionRepository) {}
 
   public async run({
-    antiguedadMinima,
+    antiguedad_minima,
     descripcion,
     frecuencia,
     id,
-    monto,
+    monto_maximo,
     nombre,
     requisitos,
   }: PrestacionCreateDto): Promise<void> {
@@ -25,11 +25,11 @@ export class CreatePrestacion {
       new PrestacionId(id),
       new PrestacionNombre(nombre),
       new PrestacionDescripcion(descripcion),
-      new PrestacionMonto(monto),
+      new PrestacionMonto(monto_maximo),
       new PrestacionFrecuencia(frecuencia),
       new PrestacionRequisitos(requisitos),
-      new PrestacionAntiguedadMinima(antiguedadMinima),
+      new PrestacionAntiguedadMinima(antiguedad_minima),
     );
-    await this.prestacionRepo.create(nuevaPrestacion);
+    await this.prestacionRepo.create(nuevaPrestacion.toPrestacionPrimitive());
   }
 }
