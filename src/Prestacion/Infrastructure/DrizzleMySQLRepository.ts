@@ -21,8 +21,8 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
     }
   }
 
-  public async getAll(_query: IQuery): Promise<PrestacionPrimitive[]> {
-    const AllPrestaciones = db.select().from(prestaciones);
+  public async getAll({ page, perPage }: IQuery): Promise<PrestacionPrimitive[]> {
+    const AllPrestaciones = db.select().from(prestaciones).limit(page).offset(perPage);
     return AllPrestaciones;
   }
 }
