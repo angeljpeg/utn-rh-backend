@@ -18,7 +18,7 @@ export class PrestacionController {
 
   public async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { page = 1, perPage = 10, order = 'asc', orderBy } = req.query;
+      const { page = 1, perPage = 10, order = 'asc', orderBy = 'id' } = req.query;
       const prestaciones = await Prestacion.getAll.run({
         page: Number(page),
         perPage: Number(perPage),
