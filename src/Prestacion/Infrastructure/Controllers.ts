@@ -19,7 +19,7 @@ export class PrestacionController {
     try {
       const page = 0;
       const perPage = 0;
-      const prestaciones = Prestacion.getAll.run({ page, perPage });
+      const prestaciones = await Prestacion.getAll.run({ page, perPage });
 
       res.status(200).json(prestaciones);
     } catch (error) {
