@@ -1,7 +1,7 @@
 // PRESTACIONES
 // Casos de Uso
 import { CreatePrestacion } from '@/src/Prestacion/Application/Create';
-import { GetAllPrestaciones } from '@/src/Prestacion/Application/GeteAll';
+import { GetAllPrestaciones } from '@/src/Prestacion/Application/GetAll';
 // Repositories
 import { PrestacionMySQLRepository } from '@/src/Prestacion/Infrastructure/DrizzleMySQLRepository';
 const PrestacionRepository = new PrestacionMySQLRepository();
