@@ -25,10 +25,10 @@ export class CreatePrestacion {
       id ? new PrestacionId(id) : PrestacionId.random(),
       new PrestacionNombre(nombre),
       new PrestacionDescripcion(descripcion),
-      new PrestacionMonto(monto_maximo),
+      new PrestacionMonto(Number(monto_maximo)),
       new PrestacionFrecuencia(frecuencia),
       new PrestacionRequisitos(requisitos),
-      new PrestacionAntiguedadMinima(antiguedad_minima),
+      new PrestacionAntiguedadMinima(Number(antiguedad_minima)),
     );
     await this.prestacionRepo.create(nuevaPrestacion.toPrestacionPrimitive());
   }
