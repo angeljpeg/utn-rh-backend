@@ -1,6 +1,7 @@
 // PRESTACIONES
 // Casos de Uso
 import { CreatePrestacion } from '@/src/Prestacion/Application/Create';
+import { DeletePrestacion } from '@/src/Prestacion/Application/Delete';
 import { GetAllPrestaciones } from '@/src/Prestacion/Application/GetAll';
 import { GetPrestacionById } from '@/src/Prestacion/Application/GetById';
 import { UpdatePrestacion } from '@/src/Prestacion/Application/Update';
@@ -14,5 +15,6 @@ export const ServiceContainer = {
     getAll: new GetAllPrestaciones(PrestacionRepository),
     getById: new GetPrestacionById(PrestacionRepository),
     update: new UpdatePrestacion(PrestacionRepository),
+    delete: new DeletePrestacion(PrestacionRepository),
   },
 };

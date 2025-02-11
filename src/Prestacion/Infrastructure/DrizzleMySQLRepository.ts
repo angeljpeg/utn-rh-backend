@@ -64,4 +64,12 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
       console.error(error);
     }
   }
+
+  public async delete(id: number): Promise<void> {
+    try {
+      await db.delete(prestaciones).where(eq(prestaciones.id, id));
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
