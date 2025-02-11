@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ServiceContainer } from '@/src/Shared/Infrastructure/ServiceContainer';
 import { PrestacionPrimitive } from '../Domain/Interfaces/PrestacionPrimitive';
-//import { IQuery } from '@/src/Shared/Domain/Interfaces/Query';
 
 const { prestaciones: Prestacion } = ServiceContainer;
 
