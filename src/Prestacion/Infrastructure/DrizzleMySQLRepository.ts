@@ -5,7 +5,7 @@ import { db } from '@/src/Database/Infrastructure/Drizzle/DrizzleMySQLService';
 import { PrestacionSchema as prestaciones } from '@/src/Database/Infrastructure/Drizzle/schemas/PrestacionSchema';
 import { PrestacionPrimitive } from '../Domain/Interfaces/PrestacionPrimitive';
 export class PrestacionMySQLRepository implements PrestacionRepository {
-  public async create(prestacion: PrestacionPrimitive): Promise<void> {
+  public async create(prestacion: Omit<PrestacionPrimitive, 'id'>): Promise<void> {
     try {
       await db.insert(prestaciones).values({
         nombre: prestacion.nombre,

@@ -10,13 +10,13 @@ export class PrestacionAntiguedadMinima {
     if (!value)
       throw new BadRequest({
         message: 'La Antiguedad  es necesaria',
-        campo: 'PrestacionAntiguedadMinima',
+        campo: 'antiguedad_minima',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'La antiguedad minoma  tiene que ser un numero',
-        campo: 'PrestacionAntiguedadMinima',
+        campo: 'antiguedad_minima',
         data: value,
       });
     }

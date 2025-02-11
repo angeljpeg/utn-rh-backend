@@ -1,5 +1,5 @@
 import { Prestacion } from '../../Domain/Entities/Prestacion';
-import { PrestacionAntiguedadMinima } from '../../Domain/Entities/PrestacionAntiguiedadMinima';
+import { PrestacionAntiguedadMinima } from '../../Domain/Entities/PrestacionAntiguedadMinima';
 import { PrestacionDescripcion } from '../../Domain/Entities/PrestacionDescripcion';
 import { PrestacionFrecuencia } from '../../Domain/Entities/PrestacionFrecuencia';
 import { PrestacionId } from '../../Domain/Entities/PrestacionId';
@@ -22,7 +22,7 @@ export class CreatePrestacion {
     requisitos,
   }: PrestacionCreateDto): Promise<void> {
     const nuevaPrestacion = new Prestacion(
-      new PrestacionId(id),
+      id ? new PrestacionId(id) : PrestacionId.random(),
       new PrestacionNombre(nombre),
       new PrestacionDescripcion(descripcion),
       new PrestacionMonto(monto_maximo),

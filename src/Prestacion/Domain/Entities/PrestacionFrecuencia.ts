@@ -11,13 +11,13 @@ export class PrestacionFrecuencia {
     if (!value) {
       throw new BadRequest({
         message: 'Favor de Seleccionar una Frecuencia',
-        campo: 'PrestacionFrecuencia',
+        campo: 'frecuencia',
       });
     }
     if (!FRECUENCIAS.includes(value as FrecuenciaType)) {
       throw new BadRequest({
         message: 'Favor de Seleccionar un Valor que sea Valido Como Unico o Una Vez al Año',
-        campo: 'PrestacionFrecuencia',
+        campo: 'frecuencia',
         data: value,
       });
     }

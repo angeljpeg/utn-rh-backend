@@ -10,20 +10,20 @@ export class PrestacionMonto {
     if (!value)
       throw new BadRequest({
         message: 'El monto es necesario',
-        campo: 'PrestacionMonto',
+        campo: 'monto_maximo',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'El Monto Tiene Que Ser Un Numero',
-        campo: 'PrestacionMonto',
+        campo: 'monto_maximo',
         data: value,
       });
     }
     if (value < 0) {
       throw new BadRequest({
         message: 'El monto no tiene que ser menor a 0',
-        campo: 'PrestacionMonto',
+        campo: 'monto_maximo',
         data: value,
       });
     }

@@ -13,12 +13,16 @@ export class PrestacionId {
         campo: 'PrestacionId',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value))
       throw new BadRequest({
         message: 'El ID tiene que ser un numero',
         campo: 'PrestacionId',
         data: value,
       });
-    }
+  }
+
+  public static random(): PrestacionId {
+    // This method will be replaced by auto-generated ID in the database
+    return new PrestacionId(1);
   }
 }

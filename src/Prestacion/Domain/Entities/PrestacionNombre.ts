@@ -21,11 +21,11 @@ export class PrestacionNombre {
         data: value,
       });
 
-    if (this.value.length > 50)
+    if (value.length > 50)
       throw new BadRequest({
         message: 'El Nombre debe ser al menos 50 caracteres',
         campo: 'PrestacionNombre',
-        data: this.value,
+        data: value,
       });
   }
 }

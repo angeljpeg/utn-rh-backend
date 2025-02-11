@@ -1,5 +1,5 @@
 import { PrestacionPrimitive } from '../Interfaces/PrestacionPrimitive';
-import { PrestacionAntiguedadMinima } from './PrestacionAntiguiedadMinima';
+import { PrestacionAntiguedadMinima } from './PrestacionAntiguedadMinima';
 import { PrestacionDescripcion } from './PrestacionDescripcion';
 import { PrestacionFrecuencia } from './PrestacionFrecuencia';
 import { PrestacionId } from './PrestacionId';
@@ -11,15 +11,15 @@ export class Prestacion {
   public Id: PrestacionId;
   public Nombre: PrestacionNombre;
   public Descripcion: PrestacionDescripcion;
-  public Monto: PrestacionMonto;
+  public Monto_Maximo: PrestacionMonto;
   public Frecuencia: PrestacionFrecuencia;
   public Requisitos: PrestacionRequisitos;
-  public AntiguedadMinima: PrestacionAntiguedadMinima;
+  public Antigueda_Minima: PrestacionAntiguedadMinima;
   public constructor(
     id: PrestacionId,
     nombre: PrestacionNombre,
     descripcion: PrestacionDescripcion,
-    monto: PrestacionMonto,
+    monto_maximo: PrestacionMonto,
     frecuencia: PrestacionFrecuencia,
     requisitos: PrestacionRequisitos,
     antiguedadMinima: PrestacionAntiguedadMinima,
@@ -27,10 +27,10 @@ export class Prestacion {
     this.Id = id;
     this.Nombre = nombre;
     this.Descripcion = descripcion;
-    this.Monto = monto;
+    this.Monto_Maximo = monto_maximo;
     this.Frecuencia = frecuencia;
     this.Requisitos = requisitos;
-    this.AntiguedadMinima = antiguedadMinima;
+    this.Antigueda_Minima = antiguedadMinima;
   }
 
   public toPrestacionPrimitive(): PrestacionPrimitive {
@@ -38,10 +38,10 @@ export class Prestacion {
       id: this.Id.value,
       nombre: this.Nombre.value,
       descripcion: this.Descripcion.value,
-      monto_maximo: this.Monto.value,
+      monto_maximo: this.Monto_Maximo.value,
       frecuencia: this.Frecuencia.value,
       requisitos: this.Requisitos.value,
-      antiguedad_minima: this.AntiguedadMinima.value,
+      antiguedad_minima: this.Antigueda_Minima.value,
     };
   }
 }

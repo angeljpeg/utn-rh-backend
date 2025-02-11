@@ -10,22 +10,22 @@ export class PrestacionRequisitos {
     if (!value)
       throw new BadRequest({
         message: 'El requisito de la prestacion es nesecario',
-        campo: 'PrestacionRequisitos',
+        campo: 'requisitos',
         data: value,
       });
 
     if (value.length < 3)
       throw new BadRequest({
         message: 'El requisito debe ser al menos 3 caracteres',
-        campo: 'PrestacionRequisitos',
+        campo: 'requisitos',
         data: value,
       });
 
-    if (this.value.length > 500)
+    if (value.length > 500)
       throw new BadRequest({
         message: 'El requisito debe ser al menos 500 caracteres',
-        campo: 'PrestacionRequisitos',
-        data: this.value,
+        campo: 'requisitos',
+        data: value,
       });
   }
 }

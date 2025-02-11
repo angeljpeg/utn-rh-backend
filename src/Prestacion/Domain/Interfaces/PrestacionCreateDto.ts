@@ -1,3 +1,3 @@
 import { PrestacionPrimitive } from './PrestacionPrimitive';
 
-export type PrestacionCreateDto = PrestacionPrimitive;
+export type PrestacionCreateDto = Omit<PrestacionPrimitive, 'id'> & { id?: number };

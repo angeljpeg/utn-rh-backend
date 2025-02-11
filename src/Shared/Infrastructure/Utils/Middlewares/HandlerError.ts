@@ -11,7 +11,7 @@ export default function handlerError(
     res.status(err.statusCode).json(err);
     next();
   }
-
+  console.error(err);
   res.status(500).json({ message: 'Internal server error', error: err });
   next();
 }
