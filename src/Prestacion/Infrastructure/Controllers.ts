@@ -40,4 +40,27 @@ export class PrestacionController {
       next(error);
     }
   }
+
+  public async update(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+      const prestacion = req.body;
+      await Prestacion.update.run(Number(id), prestacion);
+      res
+        .status(200)
+        .json({ message: `La prestacion con el id ${id} fue actualizada exitosamente` });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+      //await Prestacion.delete.run(Number(id));
+      res.status(200).json({ message: `La prestacion con el id ${id} fue eliminada exitosamente` });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

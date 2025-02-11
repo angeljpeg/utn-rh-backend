@@ -46,4 +46,22 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
       return null;
     }
   }
+
+  public async update(id: number, prestacion: PrestacionPrimitive): Promise<void> {
+    try {
+      await db
+        .update(prestaciones)
+        .set({
+          nombre: prestacion.nombre,
+          descripcion: prestacion.descripcion,
+          monto_maximo: prestacion.monto_maximo.toString(),
+          frecuencia: prestacion.frecuencia,
+          requisitos: prestacion.requisitos,
+          antiguedad_minima: prestacion.antiguedad_minima.toString(),
+        })
+        .where(eq(prestaciones.id, id));
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
