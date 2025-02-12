@@ -2,26 +2,35 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoFechaIngreso {
   public value: Date;
-  public constructor(value: Date) {
+  
+  public constructor(value: Date | string) {
     this.ensureIsValid(value);
-    this.value = value;
+    this.value = new Date(value);
   }
 
-  private ensureIsValid(value: Date): void {
-    const regex = /^\d{4}-\d{2}-\d{2}$/;
-    const dateString = value.toISOString().split('T')[0];
+  private ensureIsValid(value: Date | string): void {
     if (!value) {
       throw new BadRequest({
-        message: 'Favor de Ingresar Una Fecha',
+        message: 'La fecha de ingreso es requerida',
         campo: 'EmpleadoFechaIngreso',
       });
     }
 
-    if (!regex.test(dateString)) {
+    const date = new Date(value);
+    if (isNaN(date.getTime())) {
       throw new BadRequest({
-        message: 'favor la fecha en el formato correcto YYYY/MM/DD',
+        message: 'La fecha de ingreso no es válida',
         campo: 'EmpleadoFechaIngreso',
-        data: dateString,
+        data: value,
+      });
+    }
+
+    // Validar que la fecha no sea futura
+    if (date > new Date()) {
+      throw new BadRequest({
+        message: 'La fecha de ingreso no puede ser futura',
+        campo: 'EmpleadoFechaIngreso',
+        data: value,
       });
     }
   }

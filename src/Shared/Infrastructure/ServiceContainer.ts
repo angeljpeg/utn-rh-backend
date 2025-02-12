@@ -2,6 +2,10 @@
 // Casos de Uso
 
 import { CreateEmpleado } from '@/src/Empleados/Application/Create/Index';
+import { DeleteEmpleado } from '@/src/Empleados/Application/Delete';
+import { GetAllEmpleados } from '@/src/Empleados/Application/GetAll';
+import { GetEmpleadoById } from '@/src/Empleados/Application/GetById/Index';
+import { UpdateEmpleado } from '@/src/Empleados/Application/Update/Index';
 import { EmpleadoMySQLRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLRepositoty';
 import { CreatePrestacion } from '@/src/Prestacion/Application/Create';
 import { DeletePrestacion } from '@/src/Prestacion/Application/Delete';
@@ -23,5 +27,9 @@ export const ServiceContainer = {
   },
   Empleado:{
     create: new CreateEmpleado(EmpleadoRepository),
+    getAll: new GetAllEmpleados(EmpleadoRepository),
+    getById: new GetEmpleadoById(EmpleadoRepository),
+    update: new UpdateEmpleado(EmpleadoRepository),
+    delete: new DeleteEmpleado(EmpleadoRepository),
   }
 };
