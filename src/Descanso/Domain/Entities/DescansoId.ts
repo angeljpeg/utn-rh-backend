@@ -10,13 +10,13 @@ export class DescansoId {
     if (!value)
       throw new BadRequest({
         message: 'El ID es necesario',
-        campo: 'DescansoId',
+        campo: 'id',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'El ID tiene que ser un numero',
-        campo: 'DescansoId',
+        campo: 'id',
         data: value,
       });
     }
