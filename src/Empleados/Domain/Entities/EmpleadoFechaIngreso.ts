@@ -11,7 +11,7 @@ export class EmpleadoFechaIngreso {
   private ensureIsValid(value: string | Date): void {
     if (!value) {
       throw new BadRequest({
-        message: 'Favor de Ingresar Una Fecha',
+        message: 'La fecha de ingreso es requerida',
         campo: 'EmpleadoFechaIngreso',
       });
     }

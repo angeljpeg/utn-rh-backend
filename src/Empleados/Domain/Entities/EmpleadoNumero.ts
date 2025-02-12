@@ -15,7 +15,7 @@ export class EmpleadoNumero {
         campo: 'NumeroEmpleado',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'El numero de empleado tiene que ser un numero',
         campo: 'NumeroEmpleado',
