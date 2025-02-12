@@ -5,6 +5,7 @@ import handlerError from './Shared/Infrastructure/Utils/Middlewares/HandlerError
 
 // Routers
 import { PrestacionRouter } from './Prestacion/Infrastructure/Router';
+import { EmpleadoRouter } from './Empleados/Infrastructure/Router';
 
 // CONSTS
 const PREFIX = '/api/v1';
@@ -17,6 +18,7 @@ app.use(cors());
 
 // Routes
 app.use(PREFIX, PrestacionRouter);
+app.use(PREFIX, EmpleadoRouter);
 app.all('*', (req, res, next) => {
   res.status(404).json({ message: 'Not found' });
   next();
