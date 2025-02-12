@@ -23,4 +23,8 @@ export class EmpleadoNumero {
       });
     }
   }
+  public static random(): EmpleadoNumero {
+    // This method will be replaced by auto-generated ID in the database
+    return new EmpleadoNumero(1);
+  }
 }

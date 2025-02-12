@@ -1,7 +1,7 @@
 import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoGenero {
-  public value: 'M' | 'F';
+  public value: string;
   public constructor(value: 'M' | 'F') {
     this.ensureIsValid(value);
     this.value = value;

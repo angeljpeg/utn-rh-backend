@@ -1,7 +1,7 @@
-export interface EmppleadoPrimitive {
-  id: number;
+export interface EmpleadoPrimitive {
+  id?: number;
   nombre: string;
-  genero: string;
+  genero: 'M' | 'F';
   fecha_ingreso: Date;
-  antiguedad: number | string;
+  antiguedad: number;
 }
