@@ -1,5 +1,8 @@
 // PRESTACIONES
 // Casos de Uso
+
+import { CreateEmpleado } from '@/src/Empleados/Application/Create/Index';
+import { EmpleadoMySQLRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLRepositoty';
 import { CreatePrestacion } from '@/src/Prestacion/Application/Create';
 import { DeletePrestacion } from '@/src/Prestacion/Application/Delete';
 import { GetAllPrestaciones } from '@/src/Prestacion/Application/GetAll';

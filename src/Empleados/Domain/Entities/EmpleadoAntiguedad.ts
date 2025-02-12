@@ -13,7 +13,7 @@ export class EmpleadoAntiguedad {
         campo: 'EmpleadoAntiguedad',
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'La antiguedad tiene que ser un numero',
         campo: 'EmpleadoAntiguedad',

@@ -1,4 +1,5 @@
 
+import { EmpleadoPrimitive } from '../Interfaces/EmpleadoPrimitive';
 import { EmpleadoAntiguedad } from './EmpleadoAntiguedad';
 import { EmpleadoFechaIngreso } from './EmpleadoFechaIngreso';
 import { EmpleadoGenero } from './EmpleadoGenero';
@@ -26,5 +27,14 @@ export class Empleado {
     this.Antiguedad = antiguedad
   }
 
+  public toEmpleadoPrimitive(): EmpleadoPrimitive {
+    return {
+      id: this.empleadoNumero.value,
+      nombre: this.empleadoNombre.value,
+      genero: this.Genero.value,
+      fecha_ingreso: this.FechaIngreso.value,
+      antiguedad: this.Antiguedad.value,
+    };
+  }
 }
 
