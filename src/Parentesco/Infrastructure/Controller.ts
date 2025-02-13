@@ -38,6 +38,17 @@ export class ParentescoController {
         next(error);
       }
     }
+
+    public async update(req: Request, res: Response, next: NextFunction): Promise<void> {
+      try {
+        const { id } = req.params;
+        const parentesco = req.body;
+        await ServiceContainer.Parentesco.update.run(Number(id), parentesco);
+        res.status(200).json({ message: `La parentesco con el id ${id} fue actualizada exitosamente` });
+      } catch (error) {
+        next(error);
+      }
+    }
     
 }
 

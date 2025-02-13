@@ -34,4 +34,13 @@ export class DrizzleParentescoRepository implements ParentescoRepository {
       .limit(1);
     return parentesco[0];
   }
+  public async update(id: number, parentesco: ParentescoPrimitive): Promise<void> {
+    await db
+      .update(parentescos)
+      .set({
+        nombre: parentesco.nombre,
+        grado: parentesco.grado,
+      })
+      .where(eq(parentescos.id, id));
+  }
 }
