@@ -2,7 +2,7 @@ import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
 import { BeneficiarioId } from './BeneficiarioId';
 import { BeneficiarioNombre } from './BeneficiarioNombre';
 import { BeneficiarioNivelEducativo } from './BeneficiarioNivelEducativo';
-import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParenetescoId';
+import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParentescoId';
 import { BeneficiarioPrimitive } from '../Interface/BeneficiarioPrimitive';
 
 export class Beneficiario {

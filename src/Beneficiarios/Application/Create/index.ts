@@ -4,7 +4,7 @@ import { CreateBeneficiarioDto } from '../../Domain/Interface/CreateBeneficiario
 import { BeneficiarioId } from '../../Domain/Entities/BeneficiarioId';
 import { BeneficiarioNombre } from '../../Domain/Entities/BeneficiarioNombre';
 import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
-import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParenetescoId';
+import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParentescoId';
 import { Beneficiario } from '../../Domain/Entities/Beneficiario';
 import { EmpleadoRepository } from '@/src/Empleados/Domain/Entities/EmpleadoRepository';
 

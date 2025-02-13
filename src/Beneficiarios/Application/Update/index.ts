@@ -4,7 +4,7 @@ import { ParentescoRepository } from '@/src/Parentesco/Domain/Entities/Parentesc
 import { BeneficiarioId } from '../../Domain/Entities/BeneficiarioId';
 import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
 import { BeneficiarioNombre } from '../../Domain/Entities/BeneficiarioNombre';
-import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParenetescoId';
+import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParentescoId';
 import { BeneficiarioPrimitive } from '../../Domain/Interface/BeneficiarioPrimitive';
 import { Beneficiario } from '../../Domain/Entities/Beneficiario';
 
