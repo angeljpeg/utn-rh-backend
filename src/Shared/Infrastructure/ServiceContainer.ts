@@ -26,6 +26,7 @@ import { EmpleadoMySQLRepository } from '@/src/Empleados/Infrastructure/DrizzleM
 import { DrizzleParentescoRepository } from '@/src/Parentesco/Infrastructure/DrizzleMySQLRepository';
 import { CreateParentesco } from '@/src/Parentesco/Application/Create/Index';
 import { GetAllParentesco } from '@/src/Parentesco/Application/GetAll/Index';
+import { GetParentescoById } from '@/src/Parentesco/Application/GetById/Index';
 const EmpleadoRepository = new EmpleadoMySQLRepository();
 
 // Parentescos
@@ -58,6 +59,7 @@ export const ServiceContainer = {
   Parentesco:{
     create: new CreateParentesco(ParentescoRepository),
     getAll: new GetAllParentesco(ParentescoRepository),
+    getById: new GetParentescoById(ParentescoRepository),
 } 
  
 };

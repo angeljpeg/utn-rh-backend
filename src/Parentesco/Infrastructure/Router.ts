@@ -6,5 +6,6 @@ const router = Router();
 
 router.post('/parentesco', controller.create);
 router.get('/parentescos', controller.getAll);
+router.get('/parentesco/:id', controller.getById);
 
 export { router as ParentescoRouter };

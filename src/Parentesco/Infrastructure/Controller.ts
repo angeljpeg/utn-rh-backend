@@ -27,6 +27,17 @@ export class ParentescoController {
         next(error);
       }
     }
+
+    public async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
+      try {
+        const { id } = req.params;
+        const parentesco = await ServiceContainer.Parentesco.getById.run(Number(id));
+        res.status(200).json(parentesco);
+      } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error });
+        next(error);
+      }
+    }
     
 }
 
