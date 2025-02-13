@@ -4,12 +4,12 @@ import { DiasDescansoId } from './DiasDescansoId';
 
 export class DiasDescanso {
   public DiasDescansoId: DiasDescansoId;
-  public DesacansoId: DescansoId;
+  public DescansoId: DescansoId;
   public DiasDesacansoFecha: DiasDescansoFecha;
 
   public constructor(id: DiasDescansoId, descanso: DescansoId, fecha: DiasDescansoFecha) {
     this.DiasDescansoId = id;
-    this.DesacansoId = descanso;
+    this.DescansoId = descanso;
     this.DiasDesacansoFecha = fecha;
   }
 }

@@ -12,14 +12,14 @@ export class DiasDescansoFecha {
     if (!value) {
       throw new BadRequest({
         message: 'Favor de Ingresar Una Fecha',
-        campo: 'DiasDescansoFecha',
+        campo: 'fecha',
       });
     }
 
     if (!regex.test(dateString)) {
       throw new BadRequest({
         message: 'favor la fecha en el formato correcto YYYY/MM/DD',
-        campo: 'DiasDescansoFecha',
+        campo: 'fecha',
         data: dateString,
       });
     }

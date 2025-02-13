@@ -10,13 +10,13 @@ export class DiasDescansoId {
     if (!value)
       throw new BadRequest({
         message: 'El Id del Dia es necesario',
-        campo: 'DiasDescansoId',
+        campo: 'descanso_id',
       });
 
     if (!isNaN(value)) {
       throw new BadRequest({
         message: 'El Id del Dia tiene que ser un numero',
-        campo: 'DiasDescansoId',
+        campo: 'descanso_id',
         data: value,
       });
     }
