@@ -2,6 +2,7 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoFechaIngreso {
   public value: Date;
+  private campo = 'fecha_ingreso';
 
   public constructor(value: string | Date) {
     this.ensureIsValid(value);
@@ -12,7 +13,7 @@ export class EmpleadoFechaIngreso {
     if (!value) {
       throw new BadRequest({
         message: 'La fecha de ingreso es requerida',
-        campo: 'EmpleadoFechaIngreso',
+        campo: this.campo,
       });
     }
 
@@ -27,7 +28,7 @@ export class EmpleadoFechaIngreso {
     if (!regex.test(dateStr)) {
       throw new BadRequest({
         message: 'La fecha debe estar en formato YYYY-MM-DD (ejemplo: 2024-02-11)',
-        campo: 'EmpleadoFechaIngreso',
+        campo: this.campo,
         data: dateStr,
       });
     }
@@ -37,7 +38,7 @@ export class EmpleadoFechaIngreso {
     if (isNaN(date.getTime())) {
       throw new BadRequest({
         message: 'La fecha ingresada no es válida',
-        campo: 'EmpleadoFechaIngreso',
+        campo: this.campo,
         data: dateStr,
       });
     }
