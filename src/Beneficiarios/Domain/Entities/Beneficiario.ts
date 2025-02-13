@@ -1,21 +1,22 @@
 import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
 import { BeneficiarioId } from './BeneficiarioId';
 import { BeneficiarioNombre } from './BeneficiarioNombre';
-import { BeneficiariosParentesco } from './BeneficiariosParentesco';
 import { BeneficiarioNivelEducativo } from './BeneficiarioNivelEducativo';
+import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParenetescoId';
+import { BeneficiarioPrimitive } from '../Interface/BeneficiarioPrimitive';
 
 export class Beneficiario {
   public BeneficiarioiId: BeneficiarioId;
   public EmpleadoId: EmpleadoNumero;
   public Nombre: BeneficiarioNombre;
-  public Parentesco: BeneficiariosParentesco;
+  public Parentesco: ParentescoId;
   public NivelEducativo?: BeneficiarioNivelEducativo;
 
   public constructor(
     id: BeneficiarioId,
     empleado: EmpleadoNumero,
     nombre: BeneficiarioNombre,
-    parentesco: BeneficiariosParentesco,
+    parentesco: ParentescoId,
     nivelEducativo?: BeneficiarioNivelEducativo,
   ) {
     this.BeneficiarioiId = id;
@@ -23,5 +24,14 @@ export class Beneficiario {
     this.Nombre = nombre;
     this.Parentesco = parentesco;
     this.NivelEducativo = nivelEducativo;
+  }
+
+  public toBeneficiarioPrimitive(): BeneficiarioPrimitive {
+    return {
+      id: this.BeneficiarioiId.value,
+      empleado: this.EmpleadoId.value,
+      nombre: this.Nombre.value,
+      parentesco: this.Parentesco.value,
+    };
   }
 }

@@ -21,4 +21,8 @@ export class BeneficiarioId {
       });
     }
   }
+
+  public static random(): BeneficiarioId {
+    return new BeneficiarioId(Math.floor(Math.random() * 100));
+  }
 }
