@@ -2,6 +2,7 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class DescansoSolicitudFechaFinal {
   public value: Date;
+  private campo = 'fecha_final';
   public constructor(value: Date) {
     this.ensureIsValid(value);
     this.value = value;
@@ -12,14 +13,14 @@ export class DescansoSolicitudFechaFinal {
     if (!value) {
       throw new BadRequest({
         message: 'Favor de Ingresar Una Fecha',
-        campo: 'DescansoFechaFinal',
+        campo: this.campo,
       });
     }
 
     if (!regex.test(dateString)) {
       throw new BadRequest({
         message: 'favor la fecha en el formato correcto YYYY/MM/DD',
-        campo: 'DescansoFechaFinal',
+        campo: this.campo,
         data: dateString,
       });
     }

@@ -3,6 +3,7 @@ import { ESTATUS, EstatusType } from '@/src/Shared/Domain/Interfaces/Estatus';
 
 export class DescansoSolicitudEstatus {
   public value: string;
+  private campo = 'estatus';
   public constructor(value: string) {
     this.ensureIsValid(value);
     this.value = value;
@@ -12,13 +13,13 @@ export class DescansoSolicitudEstatus {
     if (!value)
       throw new BadRequest({
         message: 'El estatus es necesario',
-        campo: 'DescansoSolicitudEstatus',
+        campo: this.campo,
       });
 
     if (!ESTATUS.includes(value as EstatusType)) {
       throw new BadRequest({
         message: 'El estatus tiene que ser un estatus valido',
-        campo: 'DescansoSolicitudEstatus',
+        campo: this.campo,
         data: value,
       });
     }
