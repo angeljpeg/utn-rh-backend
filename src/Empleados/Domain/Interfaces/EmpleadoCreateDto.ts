@@ -1,5 +1,5 @@
-import { EmpleadoPrimitive } from "./EmpleadoPrimitive";
+import { EmpleadoPrimitive } from './EmpleadoPrimitive';
 
-export interface EmpleadoCreateDto extends Omit<EmpleadoPrimitive, 'id'> {
-   id?:number
+export interface EmpleadoCreateDto extends Omit<EmpleadoPrimitive, 'id' | 'antiguedad'> {
+  id?: number;
 }
