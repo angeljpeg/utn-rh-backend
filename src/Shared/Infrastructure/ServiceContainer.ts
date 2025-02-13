@@ -35,35 +35,33 @@ const EmpleadoRepository = new EmpleadoMySQLRepository();
 
 const ParentescoRepository = new DrizzleParentescoRepository();
 
-
 export const ServiceContainer = {
-  prestaciones: {
+  Prestaciones: {
     create: new CreatePrestacion(PrestacionRepository),
     getAll: new GetAllPrestaciones(PrestacionRepository),
     getById: new GetPrestacionById(PrestacionRepository),
     update: new UpdatePrestacion(PrestacionRepository),
     delete: new DeletePrestacion(PrestacionRepository),
   },
-  descansos: {
+  Descansos: {
     create: new CreateDescanso(DescansoRepository),
     getAll: new GetAllDescansos(DescansoRepository),
     getById: new GetDescansoById(DescansoRepository),
     update: new UpdateDescanso(DescansoRepository),
     delete: new DeleteDescanso(DescansoRepository),
   },
-  Empleado:{
+  Empleado: {
     create: new CreateEmpleado(EmpleadoRepository),
     getAll: new GetAllEmpleados(EmpleadoRepository),
     getById: new GetEmpleadoById(EmpleadoRepository),
     update: new UpdateEmpleado(EmpleadoRepository),
     delete: new DeleteEmpleado(EmpleadoRepository),
   },
-  Parentesco:{
+  Parentesco: {
     create: new CreateParentesco(ParentescoRepository),
     getAll: new GetAllParentesco(ParentescoRepository),
     getById: new GetParentescoById(ParentescoRepository),
     update: new UpdateParentesco(ParentescoRepository),
     delete: new DeleteParentesco(ParentescoRepository),
-  } 
-  
+  },
 };

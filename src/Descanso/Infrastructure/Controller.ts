@@ -2,7 +2,7 @@ import { ServiceContainer } from '@/src/Shared/Infrastructure/ServiceContainer';
 import { NextFunction, Request, Response } from 'express';
 import { DescansoPrimitive } from '../Domain/Interface/DescansoPrimitive';
 
-const { descansos: Descanso } = ServiceContainer;
+const { Descansos: Descanso } = ServiceContainer;
 
 export class DescansoController {
   public async create(req: Request, res: Response, next: NextFunction): Promise<void> {

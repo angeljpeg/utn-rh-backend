@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ServiceContainer } from '@/src/Shared/Infrastructure/ServiceContainer';
 import { PrestacionPrimitive } from '../Domain/Interfaces/PrestacionPrimitive';
 
-const { prestaciones: Prestacion } = ServiceContainer;
+const { Prestaciones: Prestacion } = ServiceContainer;
 
 export class PrestacionController {
   public async create(req: Request, res: Response, next: NextFunction): Promise<void> {

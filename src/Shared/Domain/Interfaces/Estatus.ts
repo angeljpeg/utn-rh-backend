@@ -1,3 +1,3 @@
-export const ESTATUS = ['PENDIENTE', 'APROVADO', 'RECHAZADO'] as const;
+export const ESTATUS = ['PENDIENTE', 'APROBADO', 'RECHAZADO'] as const;
 
 export type EstatusType = (typeof ESTATUS)[number];
