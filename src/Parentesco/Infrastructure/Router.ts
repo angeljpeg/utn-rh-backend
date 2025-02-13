@@ -5,5 +5,6 @@ const controller = new ParentescoController();
 const router = Router();
 
 router.post('/parentesco', controller.create);
+router.get('/parentescos', controller.getAll);
 
 export { router as ParentescoRouter };
