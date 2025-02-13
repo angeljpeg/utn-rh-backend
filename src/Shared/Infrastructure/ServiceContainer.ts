@@ -23,7 +23,14 @@ import { GetAllEmpleados } from '@/src/Empleados/Application/GetAll';
 import { GetEmpleadoById } from '@/src/Empleados/Application/GetById/Index';
 import { UpdateEmpleado } from '@/src/Empleados/Application/Update/Index';
 import { EmpleadoMySQLRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLRepositoty';
+import { DrizzleParentescoRepository } from '@/src/Parentesco/Infrastructure/DrizzleMySQLRepository';
+import { CreateParentesco } from '@/src/Parentesco/Application/Create/Index';
 const EmpleadoRepository = new EmpleadoMySQLRepository();
+
+// Parentescos
+
+const ParentescoRepository = new DrizzleParentescoRepository();
+
 
 export const ServiceContainer = {
   prestaciones: {
@@ -46,5 +53,9 @@ export const ServiceContainer = {
     getById: new GetEmpleadoById(EmpleadoRepository),
     update: new UpdateEmpleado(EmpleadoRepository),
     delete: new DeleteEmpleado(EmpleadoRepository),
-  }
+  },
+  Parentesco:{
+    create: new CreateParentesco(ParentescoRepository),
+} 
+ 
 };
