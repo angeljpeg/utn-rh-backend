@@ -29,7 +29,7 @@ export class ParentescoGrado {
         data: value,
       });
 
-    if (value <= 4)
+    if (value > 4)
       throw new BadRequest({
         message: 'El Grado tiene que ser menor o igual que 4',
         campo: this.campo,

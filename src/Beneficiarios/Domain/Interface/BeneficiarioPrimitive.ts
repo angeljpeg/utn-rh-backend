@@ -1,6 +1,9 @@
+import { NIVEL_EDUCATIVO } from "./NivelEducativo";
+
 export interface BeneficiarioPrimitive {
   id?: number;
-  empleado: number;
+  empleado_id: number;
   nombre: string;
-  parentesco: number;
+  parentesco_id: number;
+  nivel_educativo: typeof NIVEL_EDUCATIVO[number];
 }

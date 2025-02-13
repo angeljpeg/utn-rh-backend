@@ -23,17 +23,26 @@ import { GetAllEmpleados } from '@/src/Empleados/Application/GetAll';
 import { GetEmpleadoById } from '@/src/Empleados/Application/GetById/Index';
 import { UpdateEmpleado } from '@/src/Empleados/Application/Update/Index';
 import { EmpleadoMySQLRepository } from '@/src/Empleados/Infrastructure/DrizzleMySQLRepositoty';
+
+const EmpleadoRepository = new EmpleadoMySQLRepository();
+
+// Parentescos
 import { DrizzleParentescoRepository } from '@/src/Parentesco/Infrastructure/DrizzleMySQLRepository';
 import { CreateParentesco } from '@/src/Parentesco/Application/Create/Index';
 import { GetAllParentesco } from '@/src/Parentesco/Application/GetAll/Index';
 import { GetParentescoById } from '@/src/Parentesco/Application/GetById/Index';
 import { UpdateParentesco } from '@/src/Parentesco/Application/Update/Index';
 import { DeleteParentesco } from '@/src/Parentesco/Application/Delete/Index';
-const EmpleadoRepository = new EmpleadoMySQLRepository();
-
-// Parentescos
-
 const ParentescoRepository = new DrizzleParentescoRepository();
+
+// Beneficiarios
+import { CreateBeneficiario } from '@/src/Beneficiarios/Application/Create';
+import { GetAllBeneficiarios } from '@/src/Beneficiarios/Application/GetAll';
+import { GetBeneficiarioById } from '@/src/Beneficiarios/Application/GetById';
+import { UpdateBeneficiario } from '@/src/Beneficiarios/Application/Update';
+import { DeleteBeneficiario } from '@/src/Beneficiarios/Application/Delete';
+import { BeneficiarioSQLRepository } from '@/src/Beneficiarios/Infrastructure/DrizzleMySQLRepository';
+const BeneficiarioRepository = new BeneficiarioSQLRepository();
 
 export const ServiceContainer = {
   Prestaciones: {
@@ -64,4 +73,12 @@ export const ServiceContainer = {
     update: new UpdateParentesco(ParentescoRepository),
     delete: new DeleteParentesco(ParentescoRepository),
   },
+  Beneficiarios: {
+    create: new CreateBeneficiario(BeneficiarioRepository, EmpleadoRepository, ParentescoRepository),
+    getAll: new GetAllBeneficiarios(BeneficiarioRepository),
+    getById: new GetBeneficiarioById(BeneficiarioRepository),
+    update: new UpdateBeneficiario(BeneficiarioRepository, ParentescoRepository, EmpleadoRepository),
+    delete: new DeleteBeneficiario(BeneficiarioRepository),
+  },
+  
 };

@@ -14,7 +14,7 @@ export class BeneficiarioId {
         campo: this.campo,
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'El ID tiene que ser un numero',
         campo: this.campo,
