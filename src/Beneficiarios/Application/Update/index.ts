@@ -7,6 +7,7 @@ import { BeneficiarioNombre } from '../../Domain/Entities/BeneficiarioNombre';
 import { ParentescoId } from '@/src/Parentesco/Domain/Entities/ParentescoId';
 import { BeneficiarioPrimitive } from '../../Domain/Interface/BeneficiarioPrimitive';
 import { Beneficiario } from '../../Domain/Entities/Beneficiario';
+import { BeneficiarioNivelEducativo } from '../../Domain/Entities/BeneficiarioNivelEducativo';
 
 export class UpdateBeneficiario {
   public constructor(
@@ -17,14 +18,15 @@ export class UpdateBeneficiario {
 
   public async run(id: number, beneficiario: Omit<BeneficiarioPrimitive, 'id'>): Promise<void> {
     await this.beneficiarioRepo.getById(id);
-    if (beneficiario.empleado) await this.empleadoRepo.getById(beneficiario.empleado);
-    if (beneficiario.parentesco) await this.parentescoRepo.getById(beneficiario.parentesco);
+    if (beneficiario.empleado_id) await this.empleadoRepo.getById(beneficiario.empleado_id);
+    if (beneficiario.parentesco_id) await this.parentescoRepo.getById(beneficiario.parentesco_id);
 
     const newBeneficiario = new Beneficiario(
       new BeneficiarioId(id),
-      new EmpleadoNumero(beneficiario.empleado),
+      new EmpleadoNumero(beneficiario.empleado_id),
       new BeneficiarioNombre(beneficiario.nombre),
-      new ParentescoId(beneficiario.parentesco),
+      new ParentescoId(beneficiario.parentesco_id),
+      new BeneficiarioNivelEducativo(beneficiario.nivel_educativo),
     );
 
     return this.beneficiarioRepo.update(id, newBeneficiario.toBeneficiarioPrimitive());

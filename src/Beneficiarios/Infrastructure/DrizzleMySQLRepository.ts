@@ -7,7 +7,7 @@ import { IQuery } from '@/src/Shared/Domain/Interfaces/Query';
 
 export class BeneficiarioSQLRepository implements BeneficiarioRepository {
   public async create(beneficiario: Omit<BeneficiarioPrimitive, 'id'>): Promise<void> {
-    console.log(beneficiario);
+
     await db.insert(beneficiarios).values({
       empleado_id: beneficiario.empleado_id,
       nombre: beneficiario.nombre,
