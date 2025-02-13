@@ -12,10 +12,10 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
       await db.insert(prestaciones).values({
         nombre: prestacion.nombre,
         descripcion: prestacion.descripcion,
-        monto_maximo: prestacion.monto_maximo.toString(),
+        monto_maximo: prestacion.monto_maximo,
         frecuencia: prestacion.frecuencia,
         requisitos: prestacion.requisitos,
-        antiguedad_minima: prestacion.antiguedad_minima.toString(),
+        antiguedad_minima: prestacion.antiguedad_minima,
       });
     } catch (error) {
       console.error(error);
@@ -54,10 +54,10 @@ export class PrestacionMySQLRepository implements PrestacionRepository {
         .set({
           nombre: prestacion.nombre,
           descripcion: prestacion.descripcion,
-          monto_maximo: prestacion.monto_maximo.toString(),
+          monto_maximo: prestacion.monto_maximo,
           frecuencia: prestacion.frecuencia,
           requisitos: prestacion.requisitos,
-          antiguedad_minima: prestacion.antiguedad_minima.toString(),
+          antiguedad_minima: prestacion.antiguedad_minima,
         })
         .where(eq(prestaciones.id, id));
     } catch (error) {
