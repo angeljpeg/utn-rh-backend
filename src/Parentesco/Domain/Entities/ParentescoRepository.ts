@@ -6,5 +6,5 @@ export interface ParentescoRepository {
     getAll(query: IQuery<ParentescoPrimitive>): Promise<ParentescoPrimitive[]>
     getById(id: number): Promise<ParentescoPrimitive | null>
     update(id: number, parentesco: ParentescoPrimitive): Promise<void>
-
+    delete(id: number): Promise<void>
 }

@@ -43,4 +43,7 @@ export class DrizzleParentescoRepository implements ParentescoRepository {
       })
       .where(eq(parentescos.id, id));
   }
+  public async delete(id: number): Promise<void> {
+    await db.delete(parentescos).where(eq(parentescos.id, id));
+  }
 }

@@ -28,6 +28,7 @@ import { CreateParentesco } from '@/src/Parentesco/Application/Create/Index';
 import { GetAllParentesco } from '@/src/Parentesco/Application/GetAll/Index';
 import { GetParentescoById } from '@/src/Parentesco/Application/GetById/Index';
 import { UpdateParentesco } from '@/src/Parentesco/Application/Update/Index';
+import { DeleteParentesco } from '@/src/Parentesco/Application/Delete/Index';
 const EmpleadoRepository = new EmpleadoMySQLRepository();
 
 // Parentescos
@@ -61,6 +62,8 @@ export const ServiceContainer = {
     create: new CreateParentesco(ParentescoRepository),
     getAll: new GetAllParentesco(ParentescoRepository),
     getById: new GetParentescoById(ParentescoRepository),
-    update: new UpdateParentesco(ParentescoRepository),} 
- 
+    update: new UpdateParentesco(ParentescoRepository),
+    delete: new DeleteParentesco(ParentescoRepository),
+  } 
+  
 };

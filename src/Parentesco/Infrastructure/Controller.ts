@@ -49,6 +49,16 @@ export class ParentescoController {
         next(error);
       }
     }
+
+    public async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
+      try {
+        const { id } = req.params;
+        await ServiceContainer.Parentesco.delete.run(Number(id));
+        res.status(200).json({ message: 'Parentesco eliminada exitosamente' });
+      } catch (error) {
+        next(error);
+      }
+    }
     
 }
 
