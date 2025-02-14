@@ -8,6 +8,7 @@ import { PrestacionRouter } from './Prestacion/Infrastructure/Router';
 import { DescansoRouter } from './Descanso/Infrastructure/Router';
 import { EmpleadoRouter } from './Empleados/Infrastructure/Router';
 import { ParentescoRouter } from './Parentesco/Infrastructure/Router';
+import { swaggerSpec } from './Shared/Infrastructure/Swagger/SwaggerConfig';
 // CONSTS
 const PREFIX = '/api/v1';
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
+swaggerSpec(app);
 app.use(PREFIX, PrestacionRouter);
 app.use(PREFIX, DescansoRouter);
 app.use(PREFIX, EmpleadoRouter);

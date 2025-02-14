@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "example": 1
+        },
+        "nombre": {
+            "type": "string",
+            "example": "Nombre"
+        },
+        "genero": {
+            "type": "string",
+            "example": "M"
+        },
+        "fecha_ingreso": {
+            "type": "string",
+            "example": "2020-01-01"
+        },
+        "antiguedad": {
+            "type": "number",
+            "example": 1
+        }
+    }
+}
