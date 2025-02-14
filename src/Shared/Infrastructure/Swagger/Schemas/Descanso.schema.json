@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "example": 1
+        },
+        "nombre": {
+            "type": "string",
+            "example": "Nombre"
+        },
+        "descripcion": {
+            "type": "string",
+            "example": "Mucho texto hasta 500 caracteres"
+        }
+    }
+}
