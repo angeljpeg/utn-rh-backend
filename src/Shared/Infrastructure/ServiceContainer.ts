@@ -44,6 +44,15 @@ import { DeleteBeneficiario } from '@/src/Beneficiarios/Application/Delete';
 import { BeneficiarioSQLRepository } from '@/src/Beneficiarios/Infrastructure/DrizzleMySQLRepository';
 const BeneficiarioRepository = new BeneficiarioSQLRepository();
 
+// Dias Descanso
+import { CreateDiasDescanso } from '@/src/DiasDescanso/Application/Create';
+import { DeleteDiasDescanso } from '@/src/DiasDescanso/Application/Delete';
+import { GetAllDiasDescanso } from '@/src/DiasDescanso/Application/GetAll';
+import { GetDiasDescansoById } from '@/src/DiasDescanso/Application/GetById';
+import { UpdateDiasDescanso } from '@/src/DiasDescanso/Application/Update';
+import { DrizzleMySQLRepository } from '@/src/DiasDescanso/Infrastructure/DrizzleMySQLRepositoty';
+const DiasDescansoRepository = new DrizzleMySQLRepository();
+
 export const ServiceContainer = {
   Prestaciones: {
     create: new CreatePrestacion(PrestacionRepository),
@@ -80,5 +89,12 @@ export const ServiceContainer = {
     update: new UpdateBeneficiario(BeneficiarioRepository, ParentescoRepository, EmpleadoRepository),
     delete: new DeleteBeneficiario(BeneficiarioRepository),
   },
+  DiasDescanso: {
+    create: new CreateDiasDescanso(DiasDescansoRepository, DescansoRepository),
+    getAll: new GetAllDiasDescanso(DiasDescansoRepository),
+    getById: new GetDiasDescansoById(DiasDescansoRepository),
+    update: new UpdateDiasDescanso(DiasDescansoRepository, DescansoRepository),
+    delete: new DeleteDiasDescanso(DiasDescansoRepository),
+  }
   
 };

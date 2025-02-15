@@ -10,6 +10,7 @@ import { EmpleadoRouter } from './Empleados/Infrastructure/Router';
 import { ParentescoRouter } from './Parentesco/Infrastructure/Router';
 import { BeneficiarioRouter } from './Beneficiarios/Infrastructure/Router';
 import { swaggerSpec } from './Shared/Infrastructure/Swagger/SwaggerConfig';
+import { DiasDescansoRouter } from './DiasDescanso/Infrastructure/Router';
 // CONSTS
 const PREFIX = '/api/v1';
 
@@ -26,6 +27,7 @@ app.use(PREFIX, DescansoRouter);
 app.use(PREFIX, EmpleadoRouter);
 app.use(PREFIX, ParentescoRouter);
 app.use(PREFIX, BeneficiarioRouter);
+app.use(PREFIX, DiasDescansoRouter);
 app.all('*', (req, res, next) => {
   res.status(404).json({ message: 'Not found' });
   next();

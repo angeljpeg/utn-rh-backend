@@ -11,14 +11,14 @@ export class DiasDescansoFecha {
     const dateString = value.toISOString().split('T')[0];
     if (!value) {
       throw new BadRequest({
-        message: 'Favor de Ingresar Una Fecha',
+        message: 'La fecha es requerida',
         campo: 'fecha',
       });
     }
 
     if (!regex.test(dateString)) {
       throw new BadRequest({
-        message: 'favor la fecha en el formato correcto YYYY/MM/DD',
+        message: 'favor la fecha en el formato correcto YYYY-MM-DD',
         campo: 'fecha',
         data: dateString,
       });

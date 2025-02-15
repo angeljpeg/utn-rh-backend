@@ -3,6 +3,6 @@ import { DescansoSchema } from './DescansoSchema';
 
 export const DiasDescansoSchema = mysqlTable('dias_descansos', {
   id: int().autoincrement().primaryKey(),
-  descanso_id: int().references(() => DescansoSchema.id),
+  descanso_id: int().references(() => DescansoSchema.id).notNull(),
   fecha: date().notNull(),
 });
