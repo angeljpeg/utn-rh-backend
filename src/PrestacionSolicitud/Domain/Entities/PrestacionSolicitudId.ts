@@ -22,4 +22,8 @@ export class PrestacionSolicitudId {
       });
     }
   }
+
+  public static random(): PrestacionSolicitudId {
+    return new PrestacionSolicitudId(Math.floor(Math.random() * 1000));
+  }
 }
