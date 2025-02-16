@@ -6,7 +6,7 @@ export class GetByIdPrestacionSolicitud {
   public constructor(private prestacionSolicitudRepository: PrestacionSolicitudRepository) {}
 
   public async run(id: number): Promise<PrestacionSolicitudPrimitive | null> {
-    const prestacionSolicitud = await this.prestacionSolicitudRepository.findById(id);
+    const prestacionSolicitud = await this.prestacionSolicitudRepository.getById(id);
 
     if (!prestacionSolicitud) {
       throw new NotFoundException({

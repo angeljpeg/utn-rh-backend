@@ -4,7 +4,6 @@ import { PrestacionSolicitudPrimitive } from '../Interfaces/PrestacionSolicitudP
 export interface PrestacionSolicitudRepository {
   create(prestacionSolicitud: PrestacionSolicitudPrimitive): Promise<void>;
   update(prestacionSolicitud: PrestacionSolicitudPrimitive): Promise<void>;
-  delete(id: number): Promise<void>;
-  findById(id: number): Promise<PrestacionSolicitudPrimitive>;
-  findAll(query: IQuery<PrestacionSolicitudPrimitive>): Promise<PrestacionSolicitudPrimitive[]>;
+  getById(id: number): Promise<PrestacionSolicitudPrimitive>;
+  getAll(query: IQuery<PrestacionSolicitudPrimitive>): Promise<PrestacionSolicitudPrimitive[]>;
 }

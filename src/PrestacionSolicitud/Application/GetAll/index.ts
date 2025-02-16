@@ -8,6 +8,6 @@ export class GetAllPrestacionSolicitud {
   public async run(
     query: IQuery<PrestacionSolicitudPrimitive>,
   ): Promise<PrestacionSolicitudPrimitive[]> {
-    return await this.prestacionSolicitudRepository.findAll(query);
+    return await this.prestacionSolicitudRepository.getAll(query);
   }
 }

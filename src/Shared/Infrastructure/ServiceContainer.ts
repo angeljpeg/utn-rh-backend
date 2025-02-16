@@ -43,6 +43,14 @@ import { UpdateBeneficiario } from '@/src/Beneficiarios/Application/Update';
 import { DeleteBeneficiario } from '@/src/Beneficiarios/Application/Delete';
 import { BeneficiarioSQLRepository } from '@/src/Beneficiarios/Infrastructure/DrizzleMySQLRepository';
 const BeneficiarioRepository = new BeneficiarioSQLRepository();
+// Solicitud Prestaciones
+
+import { SolicitudPrestacionMySQLRepository } from '@/src/PrestacionSolicitud/Infrastructure/DrizzleMySQLRepositoty';
+import { CreatePrestacionSolicitud } from '@/src/PrestacionSolicitud/Application/Create';
+import { GetAllPrestacionSolicitud } from '@/src/PrestacionSolicitud/Application/GetAll';
+import { GetByIdPrestacionSolicitud } from '@/src/PrestacionSolicitud/Application/GetById';
+import { UpdatePrestacionSolicitud } from '@/src/PrestacionSolicitud/Application/Update';
+const SolicitudPrestacionRepository = new SolicitudPrestacionMySQLRepository();
 
 export const ServiceContainer = {
   Prestaciones: {
@@ -80,5 +88,11 @@ export const ServiceContainer = {
     update: new UpdateBeneficiario(BeneficiarioRepository, ParentescoRepository, EmpleadoRepository),
     delete: new DeleteBeneficiario(BeneficiarioRepository),
   },
+  SolicitudPrestacion:{
+     create: new CreatePrestacionSolicitud(SolicitudPrestacionRepository, PrestacionRepository, EmpleadoRepository),
+     getAll: new GetAllPrestacionSolicitud(SolicitudPrestacionRepository),
+     getById: new GetByIdPrestacionSolicitud(SolicitudPrestacionRepository),
+     update: new UpdatePrestacionSolicitud(SolicitudPrestacionRepository, PrestacionRepository, EmpleadoRepository),
+  }
   
 };
