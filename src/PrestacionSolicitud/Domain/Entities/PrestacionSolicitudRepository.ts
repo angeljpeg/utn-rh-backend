@@ -5,6 +5,6 @@ export interface PrestacionSolicitudRepository {
   create(prestacionSolicitud: PrestacionSolicitudPrimitive): Promise<void>;
   update(prestacionSolicitud: PrestacionSolicitudPrimitive): Promise<void>;
   delete(id: number): Promise<void>;
-  findById(id: number): Promise<PrestacionSolicitudPrimitive | null>;
+  findById(id: number): Promise<PrestacionSolicitudPrimitive>;
   findAll(query: IQuery<PrestacionSolicitudPrimitive>): Promise<PrestacionSolicitudPrimitive[]>;
 }
