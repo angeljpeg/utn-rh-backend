@@ -8,6 +8,7 @@ import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
 import { PrestacionSolicitudFecha } from '../../Domain/Entities/PrestacionSolicitudFecha';
 import { PrestacionId } from '@/src/Prestacion/Domain/Entities/PrestacionId';
 import { PrestacionSolicitudEstatus } from '../../Domain/Entities/PrestacionSolicitudEstatus';
+import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class CreatePrestacionSolicitud {
   public constructor(
@@ -22,9 +23,33 @@ export class CreatePrestacionSolicitud {
     aprobado_por,
     id,
   }: CreateSolicitudPrestacion): Promise<void> {
-    await this.empleadoRepo.getById(empleado_id);
-    await this.empleadoRepo.getById(aprobado_por);
-    await this.prestacionRepo.getById(prestacion_id);
+    const empleado = await this.empleadoRepo.getById(empleado_id);
+    if (!empleado) {
+      throw new BadRequest({
+        message: 'El empleado no existe',
+        campo: 'empleado_id',
+        data: empleado_id,
+      });
+    }
+
+    const aprobador = await this.empleadoRepo.getById(aprobado_por);
+    if (!aprobador) {
+      throw new BadRequest({
+        message: 'El empleado aprobador no existe',
+        campo: 'aprobado_por',
+        data: aprobado_por,
+      });
+    }
+
+    const prestacion = await this.prestacionRepo.getById(prestacion_id);
+    if (!prestacion) {
+      throw new BadRequest({
+        message: 'La prestación no existe',
+        campo: 'prestacion_id',
+        data: prestacion_id,
+      });
+    }
+
     const newPrestacionSolicitud = new PrestacionSolicitud(
       id ? new PrestacionSolicitudId(id) : PrestacionSolicitudId.random(),
       new EmpleadoNumero(empleado_id),

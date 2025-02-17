@@ -8,7 +8,7 @@ export class PrestacionSolicitudController {
     try {
       const body = req.body;
       await PrestacionSolicitud.create.run(body);
-      res.status(201).json({ message: 'PrestacionSolicitud creada exitosamente' });
+      res.status(201).json({ message: 'Solicitud de Prestacion creada exitosamente' });
     } catch (error) {
       next(error);
     }
