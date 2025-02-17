@@ -2,7 +2,7 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class PrestacionId {
   public value: number;
-  private campo = 'id';
+  private campo = 'prestacion_id';
   public constructor(value: number) {
     this.ensureIsValid(value);
     this.value = value;
@@ -10,13 +10,13 @@ export class PrestacionId {
   private ensureIsValid(value: number): void {
     if (!value)
       throw new BadRequest({
-        message: 'El ID es necesario',
+        message: 'El ID de la prestacion es necesario',
         campo: this.campo,
       });
 
     if (isNaN(value))
       throw new BadRequest({
-        message: 'El ID tiene que ser un numero',
+        message: 'El ID de la prestacion tiene que ser un numero',
         campo: this.campo,
         data: value,
       });

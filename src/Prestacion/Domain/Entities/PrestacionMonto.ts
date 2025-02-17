@@ -2,7 +2,7 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class PrestacionMonto {
   public value: number;
-  private campo = 'monto';
+  private campo = 'monto_maximo';
   public constructor(value: number) {
     this.ensureIsValid(value);
     this.value = value;

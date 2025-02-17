@@ -2,7 +2,7 @@ import { BadRequest } from '@/src/Shared/Domain/Exceptions/BadRequest';
 
 export class EmpleadoNumero {
   public value: number;
-  private campo = 'id';
+  private campo = 'empleado_id';
 
   public constructor(value: number) {
     this.ensureIsValid(value);
