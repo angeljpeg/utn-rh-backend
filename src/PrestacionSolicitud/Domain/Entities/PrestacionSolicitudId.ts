@@ -14,7 +14,7 @@ export class PrestacionSolicitudId {
         campo: this.campo,
       });
 
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       throw new BadRequest({
         message: 'El numero de la solicitud de prestacion tiene que ser un numero',
         campo: this.campo,
