@@ -2,7 +2,7 @@ import { NotFoundException } from '@/src/Shared/Domain/Exceptions/NotFound';
 import { PrestacionSolicitudRepository } from '../../Domain/Entities/PrestacionSolicitudRepository';
 import { PrestacionSolicitudPrimitive } from '../../Domain/Interfaces/PrestacionSolicitudPrimitive';
 
-export class GetByIdPrestacionSolicitud {
+export class GetPrestacionSolicitudById {
   public constructor(private prestacionSolicitudRepository: PrestacionSolicitudRepository) {}
 
   public async run(id: number): Promise<PrestacionSolicitudPrimitive | null> {

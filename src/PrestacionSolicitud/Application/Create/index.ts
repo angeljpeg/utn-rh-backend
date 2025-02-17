@@ -7,6 +7,7 @@ import { PrestacionSolicitudId } from '../../Domain/Entities/PrestacionSolicitud
 import { EmpleadoNumero } from '@/src/Empleados/Domain/Entities/EmpleadoNumero';
 import { PrestacionSolicitudFecha } from '../../Domain/Entities/PrestacionSolicitudFecha';
 import { PrestacionId } from '@/src/Prestacion/Domain/Entities/PrestacionId';
+import { PrestacionSolicitudEstatus } from '../../Domain/Entities/PrestacionSolicitudEstatus';
 
 export class CreatePrestacionSolicitud {
   public constructor(
@@ -16,20 +17,21 @@ export class CreatePrestacionSolicitud {
   ) {}
 
   public async run({
-    empleado,
-    prestacion,
+    empleado_id,
+    prestacion_id,
     aprobado_por,
     id,
   }: CreateSolicitudPrestacion): Promise<void> {
-    await this.empleadoRepo.getById(empleado);
+    await this.empleadoRepo.getById(empleado_id);
     await this.empleadoRepo.getById(aprobado_por);
-    await this.prestacionRepo.getById(prestacion);
+    await this.prestacionRepo.getById(prestacion_id);
     const newPrestacionSolicitud = new PrestacionSolicitud(
       id ? new PrestacionSolicitudId(id) : PrestacionSolicitudId.random(),
-      new EmpleadoNumero(empleado),
-      new PrestacionId(prestacion),
+      new EmpleadoNumero(empleado_id),
+      new PrestacionId(prestacion_id),
       new PrestacionSolicitudFecha(new Date()),
       new EmpleadoNumero(aprobado_por),
+      new PrestacionSolicitudEstatus('PENDIENTE'),
     );
     await this.prestacionSolicitudRepo.create(newPrestacionSolicitud.toPrimitive());
   }
