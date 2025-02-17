@@ -4,9 +4,15 @@ import { PrestacionSchema } from './PrestacionSchema';
 
 export const SolicitudPrestacionSchema = mysqlTable('solicitud_prestaciones', {
   id: int().autoincrement().primaryKey(),
-  empleado_id: int().references(() => EmpleadoSchema.id),
-  prestacion_id: int().references(() => PrestacionSchema.id),
+  empleado_id: int()
+    .references(() => EmpleadoSchema.id)
+    .notNull(),
+  prestacion_id: int()
+    .references(() => PrestacionSchema.id)
+    .notNull(),
   fecha_solicitud: timestamp().notNull().defaultNow(),
-  aprobado_por: int().references(() => EmpleadoSchema.id),
-  estatus: mysqlEnum(['APROBADO', 'PENDIENTE', 'RECHAZADO']).default('PENDIENTE'),
+  aprobado_por: int()
+    .references(() => EmpleadoSchema.id)
+    .notNull(),
+  estatus: mysqlEnum(['PENDIENTE', 'APROBADO', 'RECHAZADO']).default('PENDIENTE').notNull(),
 });

@@ -1,7 +1,10 @@
+import { EstatusType } from '@/src/Shared/Domain/Interfaces/Estatus';
+
 export interface PrestacionSolicitudPrimitive {
   id: number;
-  empleado: number;
-  prestacion: number;
+  empleado_id: number;
+  prestacion_id: number;
   fecha_solicitud: Date;
   aprobado_por: number;
+  estatus: EstatusType;
 }
