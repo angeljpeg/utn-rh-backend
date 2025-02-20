@@ -1,5 +1,4 @@
 import { PeriodoVacacional } from '../../Domain/Entities/PeriodoVacacional';
-import { PeriodoVacacionalId } from '../../Domain/Entities/PeriodoVacacionalId';
 import { PeriodoVacacionalRepository } from '../../Domain/Entities/PeriodoVacacionalRepository';
 import { CreatePeriodoVacacionalDto } from '../../Domain/Interfaces/CreatePeriodoVacacionalDto';
 
@@ -14,14 +13,13 @@ export class CreatePeriodoVacacional {
     periodo_vacacional_id,
   }: CreatePeriodoVacacionalDto): Promise<void> {
     const newPeriodoVacacional = new PeriodoVacacional(
-      periodo_vacacional_id
-        ? new PeriodoVacacionalId(periodo_vacacional_id)
-        : PeriodoVacacionalId.random(),
-      anio,
-      dias_disponibles,
-      dias_tomados,
-      dias_pendientes,
+      anio ?? new Date().getFullYear(),
+      dias_disponibles ?? 20,
+      dias_tomados ?? 0,
+      dias_pendientes ?? 0,
+      periodo_vacacional_id,
     );
-    await this.periodoVacacionalRepo.create(newPeriodoVacacional);
+
+    await this.periodoVacacionalRepo.create(newPeriodoVacacional.toPrimitive());
   }
 }

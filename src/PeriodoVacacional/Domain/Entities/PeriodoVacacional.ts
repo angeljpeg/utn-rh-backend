@@ -13,11 +13,11 @@ export class PeriodoVacacional {
   public DiasPendientes: PeriodoVacacionalDiasPendientes;
 
   public constructor(
-    id?: number,
     anio: number,
     diasDisponibles: number,
     diasTomados: number,
     diasPendientes: number,
+    id?: number,
   ) {
     this.PeriodoVacacionalId = id ? new PeriodoVacacionalId(id) : PeriodoVacacionalId.random();
     this.Anio = new PeriodoVacacionalAnio(anio);
