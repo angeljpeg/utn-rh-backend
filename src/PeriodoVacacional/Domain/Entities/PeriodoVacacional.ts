@@ -1,33 +1,38 @@
 import { PeriodoVacacionalPrimitive } from '../Interfaces/PeriodoVacionalPrimitive';
+import { PeriodoVacacionalAnio } from './PeriodoVacacionalAnio';
+import { PeriodoVacacionalDiasPendientes } from './PeriodovacacionalDiasPendientes';
+import { PeriodoVacacionalDiasTomados } from './PeriodoVacacionalDiasTomados';
+import { PeriodoVacacionalId } from './PeriodoVacacionalId';
+import { PeriodoVacacionalDiasDisponibles } from './PeriodovacacionalDiasDisponibles';
 
 export class PeriodoVacacional {
-  public PeriodoVacacionalId: number;
-  public Anio: number;
-  public DiasDisponibles: number;
-  public DiasTomados: number;
-  public DiasPendientes: number;
+  public PeriodoVacacionalId: PeriodoVacacionalId;
+  public Anio: PeriodoVacacionalAnio;
+  public DiasDisponibles: PeriodoVacacionalDiasDisponibles;
+  public DiasTomados: PeriodoVacacionalDiasTomados;
+  public DiasPendientes: PeriodoVacacionalDiasPendientes;
 
   public constructor(
-    id: number,
+    id?: number,
     anio: number,
     diasDisponibles: number,
     diasTomados: number,
     diasPendientes: number,
   ) {
-    this.PeriodoVacacionalId = id;
-    this.Anio = anio;
-    this.DiasDisponibles = diasDisponibles;
-    this.DiasTomados = diasTomados;
-    this.DiasPendientes = diasPendientes;
+    this.PeriodoVacacionalId = id ? new PeriodoVacacionalId(id) : PeriodoVacacionalId.random();
+    this.Anio = new PeriodoVacacionalAnio(anio);
+    this.DiasDisponibles = new PeriodoVacacionalDiasDisponibles(diasDisponibles);
+    this.DiasTomados = new PeriodoVacacionalDiasTomados(diasTomados);
+    this.DiasPendientes = new PeriodoVacacionalDiasPendientes(diasPendientes);
   }
 
   public toPrimitive(): PeriodoVacacionalPrimitive {
     return {
-      periodo_vacacional_id: this.PeriodoVacacionalId,
-      anio: this.Anio,
-      dias_disponibles: this.DiasDisponibles,
-      dias_tomados: this.DiasTomados,
-      dias_pendientes: this.DiasPendientes,
+      periodo_vacacional_id: this.PeriodoVacacionalId.value,
+      anio: this.Anio.value,
+      dias_disponibles: this.DiasDisponibles.value,
+      dias_tomados: this.DiasTomados.value,
+      dias_pendientes: this.DiasPendientes.value,
     };
   }
 }

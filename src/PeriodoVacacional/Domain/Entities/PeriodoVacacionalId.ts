@@ -25,4 +25,8 @@ export class PeriodoVacacionalId {
       });
     }
   }
+
+  public static random(): PeriodoVacacionalId {
+    return new PeriodoVacacionalId(Math.floor(Math.random() * 1000));
+  }
 }
